@@ -15,9 +15,11 @@ import sys
 
 import random
 
+from uniborg.util import admin_cmd
 
 
-@borg.on(events.NewMessage(pattern=r"\.belo", outgoing=True))
+
+@borg.on(admin_cmd(pattern=r"belo"))
 
 async def _(event):
 
