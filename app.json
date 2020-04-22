@@ -52,12 +52,12 @@
     "PRIVATE_GROUP_ID": {
       "description": "Make a priavte group and put its ID here. helps in PMPermit and AFK.",
       "value": "",
-      "required": false
+      "required": true
     },
     "PRIVATE_GROUP_BOT_API_ID": {
       "description": "Make a priavte group and put its ID here. helps in PMPermit and AFK.",
       "value": "",
-      "required": false
+      "required": true
     },
     "HEROKU_API_KEY": {
       "description": "Go to https://dashboard.heroku.com/account, scroll down and press Reveal API.Required for updater to work.",
