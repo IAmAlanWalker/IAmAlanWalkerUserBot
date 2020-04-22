@@ -1,4 +1,4 @@
-## WELCOME NIGGA
+### WELCOME
 # FORK AT YOUR OWN RISK
 # Installing
 Contact https://t.me/Hack12R for any problem
