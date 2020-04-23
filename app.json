@@ -1,6 +1,6 @@
 {
   "name": "HardcoreUserbot",
-  "description": "Userbot created by a @Hack12R Ask https://t.me/Hack12R for any problems or support",
+  "description": "Userbot created by a @Hack12R, Join https://t.me/HardcoreUserbot for any problems or support",
   "logo": "https://telegra.ph/file/1b1304649ee3ecd281322.jpg",
   "keywords": [
     "telegram",
@@ -55,7 +55,7 @@
       "required": true
     },
     "PRIVATE_GROUP_BOT_API_ID": {
-      "description": "Make a priavte group and put its ID here. helps in PMPermit and AFK.",
+      "description": "Make a priavte group and put its ID here. helps in PMPermit and AFK. Put Same Value Of PRIVATE_GROUP_ID Here",
       "value": "",
       "required": true
     },
