@@ -52,7 +52,7 @@ async def _(event):
     userid = event.from_id
     packname = f"{user.first_name}'s hot Vol.{pack}"
     packshortname = f"vol_{pack}_with_{userid}"
-    await event.edit("`Look dat way,it's a gurl!\nMeanwhile, lemme kang this stcker over hehe ヽ༼ ಠ益ಠ ༽ﾉ`")
+    await event.edit("`Look dat way,it's a gurl!\nMeanwhile, lemme kang this stcker over hehe (,,Ծ‸Ծ,,)`")
 
     is_a_s = is_it_animated_sticker(reply_message)
     file_ext_ns_ion = "Hack12R_roxx.png"
@@ -193,7 +193,7 @@ async def _(event):
 
 
     await event.edit(f"**Kanged!** `This sticker has been stolen to` [this place](t.me/addstickers/{packshortname}), pack{pack}"
-                     f" `by` {DEFAULTUSER}\n**ᕦ(ò_óˇ)ᕤ**")
+                     f" `by` {DEFAULTUSER}\n**(-’๏_๏’-)**")
 
 
 @borg.on(admin_cmd(pattern="packinfo"))
