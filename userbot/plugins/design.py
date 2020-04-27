@@ -88,7 +88,7 @@ async def _(event):
     await event.delete()
 
     
-    @borg.on(admin_cmd("suckit"))
+@borg.on(admin_cmd("suckit"))
 async def _(event):
     if event.fwd_from:
         return
@@ -105,7 +105,7 @@ async def _(event):
     await event.delete() 
     
     
-    @borg.on(admin_cmd("ohh"))
+@borg.on(admin_cmd("ohh"))
 async def _(event):
     if event.fwd_from:
         return
