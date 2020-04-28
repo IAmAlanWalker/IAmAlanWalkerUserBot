@@ -89,7 +89,7 @@ if bool(ENV):
     # Custom (forked) repo URL for updater.
     UPSTREAM_REPO_URL = os.environ.get(
         "UPSTREAM_REPO_URL",
-        "https://github.com/hackerra/HardcoreUserbot.git")
+        "https://github.com/Hack12R/HardcoreUserbot.git")
     
     # remove.bg API key
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
