@@ -136,7 +136,7 @@ async def upstream(ups):
         heroku_applications = heroku.apps()
         if not HEROKU_APP_NAME:
             await ups.edit(
-                '`[HEROKU MEMEZ] Please set up the HEROKU_APP_NAME variable to be able to update userbot.`'
+                '`Please set up the HEROKU_APP_NAME variable to be able to update userbot.`'
             )
             repo.__del__()
             return
@@ -150,8 +150,7 @@ async def upstream(ups):
             )
             repo.__del__()
             return
-        await ups.edit('`[HEROKU MEMEZ]\
-                        \nUserbot dyno build in progress, please wait 5 min only for it to complete.`'
+        await ups.edit('`Userbot dyno build in progress, please wait 5 min only for it to complete.`'
                        )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
