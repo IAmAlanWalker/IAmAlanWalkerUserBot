@@ -1,6 +1,6 @@
 {
-  "name": "HardcoreUserbot",
-  "description": "Userbot created by a @Hack12R, Join https://t.me/HardcoreUserbot for any problems or support",
+  "name": "SensibleUserbot",
+  "description": "Userbot created by a @ceowhitehatcracks , Join https://t.me/Sensible_userbot for any problems or support",
   "logo": "https://telegra.ph/file/1b1304649ee3ecd281322.jpg",
   "keywords": [
     "telegram",
@@ -9,7 +9,7 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/Hack12R/HardcoreUserbot/",
+  "repository": "https://github.com/spandey112/SensibleUserbot/",
   "website": "#TODO",
   "success_url": "#TODO",
   "env": {
