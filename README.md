@@ -1,17 +1,17 @@
 ### WELCOME
-# FORK AT YOUR OWN RISK
+# FORK AT YOUR OWN RISK By Ceo White hat cracks
 # Installing
-Join https://t.me/HardcoreUserbot to know more !
+Join https://t.me/Sensible_userbot to know more If U Didnt it wont work !
 ### The Easy Way
 
-[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy To Heroku Ceo white hat cracks](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ### The Normal Way
 
 Simply clone the repository and run the main file:
 ```sh
-git clone https://github.com/Hack12R/HardcoreUserbot
-cd HardcoreUserbot
+git clone https://github.com/spandey112/SensibleUserbot/
+cd SensibleUserbot
 virtualenv -p /usr/bin/python3 venv
 . ./venv/bin/activate
 pip install -r requirements.txt
