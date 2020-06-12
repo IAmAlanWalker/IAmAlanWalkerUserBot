@@ -220,7 +220,7 @@ async def _(event):
 
             "😢",
 
-            "‎**Repo by @Hack12R**",
+            "‎**Repo by @ceowhitehatcracks**",
  
             "😁",
 
@@ -230,9 +230,9 @@ async def _(event):
 
             "😢",
 
-            "‎github.com/Hack12R/HardcoreUserbot",
+            "‎https://github.com/spandey112/SensibleUserbot",
 
-            "__**@HAck12R Is BeHiNd You....**__"
+            "__**@Ceowhiteahtcracks Is BeHiNd You....**__"
 
         ]
 
