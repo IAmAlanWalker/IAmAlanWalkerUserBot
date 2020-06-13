@@ -37,7 +37,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                     await PREV_REPLY_MESSAGE[chat.id].delete()
                     del PREV_REPLY_MESSAGE[chat.id]
                 pmpermit_sql.approve(chat.id, reason)
-                await event.edit("Approved Nibbi [{}](tg://user?id={})".format(firstname, chat.id))
+                await event.edit("Approved Mr(tg://user?id={}) Please Dont Spam My Masters Inbox Or Your Ass Will Be fucked[{}])".format(firstname, chat.id))
                 await asyncio.sleep(3)
                 await event.delete()
 
