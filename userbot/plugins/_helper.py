@@ -10,7 +10,7 @@ async def cmd_list(event):
             for i in CMD_LIST:
                 string += "😎" + i + "\n"
                 for iter_list in CMD_LIST[i]:
-                    string += "    `" + str(iter_list) + "`"
+                    string += " 😎   `" + str(iter_list) + "`"
                     string += "\n"
                 string += "\n"
             if len(string) > 4095:
