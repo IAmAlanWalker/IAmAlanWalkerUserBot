@@ -28,7 +28,7 @@ async def _(event):
 
     animation_chars = [
 
-            "1 ❤️ love story",
+            "1 ❤️ love story Of Ceo White Hat Cracks❤️❤️❤️ ",
             "  😐             😕 \n/👕\         <👗\ \n 👖               /|",    
             "  😉          😳 \n/👕\       /👗\ \n  👖            /|",
             "  😚            😒 \n/👕\         <👗> \n  👖             /|",
