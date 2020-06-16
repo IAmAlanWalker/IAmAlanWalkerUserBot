@@ -5,7 +5,7 @@
 .upro
 .mepro
 
-@arnab431"""
+@ceowhitehatcracks"""
 
 from telethon import events
 
