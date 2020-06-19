@@ -2,7 +2,7 @@
 #
 # Licensed under the Raphielscape Public License, Version 1.c (the "License");
 # you may not use this file except in compliance with the License.
-# credits to @AvinashReddy3108
+# credits to @Ceowhitehatcracks
 #
 """
 This module updates the userbot based on Upstream revision
@@ -101,7 +101,7 @@ async def upstream(ups):
 
     if not changelog and not force_update:
         await ups.edit(
-            f'\n`Your BOT is`  **up-to-date**  `with`  **{ac_br}**\n')
+            f'\n`Please try .update to update this userbot `with`  **{ac_br}**\n')
         repo.__del__()
         return
 
