@@ -7,7 +7,7 @@
 from telethon import events
 
 import asyncio
-
+from userbot import CMD_HELP 
 import os
 
 import sys
@@ -16,8 +16,9 @@ import random
 
 
 
-@borg.on(events.NewMessage(pattern=r"\.gotm", outgoing=True))
+from userbot.utils import admin_cmd
 
+@borg.on(admin_cmd(pattern=f"gotm", allow_sudo=True))
 async def _(event):
 
     if event.fwd_from:

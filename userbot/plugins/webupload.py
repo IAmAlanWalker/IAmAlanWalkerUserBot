@@ -1,4 +1,11 @@
-# credits: SNAPDRAGON (@s_n_a_p_s)
+# originally created by
+# https://github.com/Total-Noob-69/X-tra-Telegram/blob/master/userbot/plugins/webupload.py
+# modified by __me__ to suit **my** needs
+"""webupload ?(.+?|) --(fileio|oload|anonfiles|transfer|filebin|anonymousfiles|megaupload|bayfiles"""
+
+import json
+import os
+from userbot import CMD_HELP
 from telethon import events
 import subprocess
 import os
@@ -34,3 +41,12 @@ async def _(event):
     )
     stdout, stderr = await process.communicate()
     await event.edit(f"{stdout.decode()}")
+		
+		
+		
+CMD_HELP.update({
+    "webupload":
+    ".webupload ?(.+?|) (?:--)(anonfiles|transfer|filebin|anonymousfiles|megaupload|bayfiles\
+    \nexample: `.webupload --anonfiles` tag this to a file\
+"
+})  		

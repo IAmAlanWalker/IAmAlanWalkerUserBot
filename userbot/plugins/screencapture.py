@@ -5,9 +5,9 @@ import io
 import requests
 from telethon import events
 from userbot.utils import admin_cmd
+from userbot import CMD_HELP
 
-
-@borg.on(admin_cmd("screencapture (.*)"))
+@borg.on(admin_cmd(pattern="screencapture (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -43,3 +43,11 @@ async def _(event):
                 await event.edit(str(e))
     else:
         await event.edit(response_api.text)
+
+        
+CMD_HELP.update({
+    "screencapture":
+    ".screencapture <url>\
+    \nUsage: Takes a screenshot of a website and sends the screenshot need to set config var for this.\
+    \nExample of a valid URL : `https://www.google.com`"
+})        

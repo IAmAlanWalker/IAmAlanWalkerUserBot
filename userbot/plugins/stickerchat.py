@@ -1,20 +1,31 @@
-# Copyright (C) 2018-2019 Friendly Telegram
-#
-# Licensed under the Raphielscape Public License, Version 1.d (the "License");
-# you may not use this file except in compliance with the License.
-"""    Credits to ftg and One4uBot plugins, cmd is .pch    """
+#    Friendly Telegram (telegram userbot)
+#    Copyright (C) 2018-2019 The Authors
+
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import logging
 import requests
 import base64
 import json
-import os
+import os 
 import telethon
 
 from PIL import Image
 from io import BytesIO
-from userbot import bot, CMD_HELP, QUOTES_API_TOKEN
-from userbot.events import register
+from userbot.utils import admin_cmd
+
+logger = logging.getLogger(__name__)
 
 
 if 1 == 1:
@@ -28,7 +39,7 @@ if 1 == 1:
         "no_template": "<b>You didn't specify the template.</b>",
         "delimiter": "</code>, <code>",
         "server_error": "<b>Server error. Please report to developer.</b>",
-        "invalid_token": "<b>You've set an invalid token, get it from `http://antiddos.systems`.</b>",
+        "invalid_token": "<b>You've set an invalid token.</b>",
         "unauthorized": "<b>You're unauthorized to do this.</b>",
         "not_enough_permissions": "<b>Wrong template. You can use only the default one.</b>",
         "templates": "<b>Available Templates:</b> <code>{}</code>",
@@ -39,15 +50,17 @@ if 1 == 1:
         "channel": "Channel"
     }
 
-    config = dict({"api_url": "http://api.antiddos.systems",
+    config = dict({"api_token": os.environ.get("API_TOKEN"), 
+                                          "api_url": "http://api.antiddos.systems",
                                           "username_colors": ["#fb6169", "#faa357", "#b48bf2", "#85de85",
                                                               "#62d4e3", "#65bdf3", "#ff5694"],
                                           "default_username_color": "#b48bf2"})
+    client = borg
 
-    @register(outgoing=True, pattern="^.pch(?: |$)(.*)")
+    @borg.on(admin_cmd(pattern="stchat(.*)"))
     async def quotecmd(message):  # noqa: C901
         """Quote a message.
-        Usage: .pch [template]
+        Usage: .quote [template]
         If template is missing, possible templates are fetched."""
         await message.delete()
         args = message.raw_text.split(" ")[1:]
@@ -67,7 +80,7 @@ if 1 == 1:
         admintitle = ""
         if isinstance(message.to_id, telethon.tl.types.PeerChannel):
             try:
-                user = await bot(telethon.tl.functions.channels.GetParticipantRequest(message.chat_id,
+                user = await client(telethon.tl.functions.channels.GetParticipantRequest(message.chat_id,
                                                                                               reply.from_id))
                 if isinstance(user.participant, telethon.tl.types.ChannelParticipantCreator):
                     admintitle = user.participant.rank or strings["creator"]
@@ -77,7 +90,7 @@ if 1 == 1:
             except telethon.errors.rpcerrorlist.UserNotParticipantError:
                 user = await reply.get_sender()
         elif isinstance(message.to_id, telethon.tl.types.PeerChat):
-            chat = await bot(telethon.tl.functions.messages.GetFullChatRequest(reply.to_id))
+            chat = await client(telethon.tl.functions.messages.GetFullChatRequest(reply.to_id))
             participants = chat.full_chat.participants.participants
             participant = next(filter(lambda x: x.user_id == reply.from_id, participants), None)
             if isinstance(participant, telethon.tl.types.ChatParticipantCreator):
@@ -103,7 +116,7 @@ if 1 == 1:
             elif reply.forward.chat:
                 username = telethon.utils.get_display_name(reply.forward.chat)
 
-        pfp = await bot.download_profile_photo(profile_photo_url, bytes)
+        pfp = await client.download_profile_photo(profile_photo_url, bytes)
         if pfp is not None:
             profile_photo_url = "data:image/png;base64, " + base64.b64encode(pfp).decode()
 
@@ -120,7 +133,7 @@ if 1 == 1:
             "Text": reply.message,
             "Markdown": get_markdown(reply),
             "Template": args[0],
-            "APIKey": QUOTES_API_TOKEN
+            "APIKey": config["api_token"]
         })
 
         resp = requests.post(config["api_url"] + "/api/v2/quote", data=request)
@@ -142,7 +155,7 @@ if 1 == 1:
         elif resp["status"] == 404:
             if resp["message"] == "ERROR_TEMPLATE_NOT_FOUND":
                 newreq = requests.post(config["api_url"] + "/api/v1/getalltemplates", data={
-                    "token": QUOTES_API_TOKEN
+                    "token": config["api_token"]
                 })
                 newreq = newreq.json()
 
@@ -208,9 +221,3 @@ def get_markdown(reply):
 
         markdown.append(md_item)
     return markdown
-
-CMD_HELP.update({
-        "stickerchat": 
-        ".pch \
-          \nUsage: Same as quotly, enhance ur text to sticker."
-    })

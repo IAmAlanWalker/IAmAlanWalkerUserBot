@@ -5,10 +5,10 @@
 .upro
 .mepro
 
-@ceowhitehatcracks"""
+@arnab431"""
 
 from telethon import events
-
+from userbot import CMD_HELP 
 import asyncio
 
 from userbot.utils import admin_cmd
@@ -16,8 +16,7 @@ from userbot.utils import admin_cmd
 
 
 
-
-@borg.on(admin_cmd("(.*)"))
+@borg.on(admin_cmd(pattern="unoob"))
 
 async def _(event):
 
@@ -25,18 +24,14 @@ async def _(event):
 
         return
 
-    animation_interval = 0.5
+    animation_interval = 1
     
 
     animation_ttl = range(0, 9)
-
-    input_str = event.pattern_match.group(1)
-
-    if input_str == "unoob":
-
-        await event.edit(input_str)
-
-        animation_chars = [
+    #input_str = event.pattern_match.group(1)
+  #  if input_str == "unoob":
+    await event.edit("unnoob")
+    animation_chars = [
             "EvErYbOdY",
             "iZ",
             "BiGGeSt",
@@ -47,14 +42,14 @@ async def _(event):
             "😈",
             "EvErYbOdY iZ BiGGeSt NoOoB uNtiL YoU aRriVe 😈"
         ]
-
-        for i in animation_ttl:
+    for i in animation_ttl:
 
 
             await event.edit(animation_chars[i % 9])
             await asyncio.sleep(animation_interval)
+
             
-@borg.on(admin_cmd("(.*)"))
+@borg.on(admin_cmd(pattern="menoob"))           
 
 async def _(event):
 
@@ -62,18 +57,18 @@ async def _(event):
 
         return
 
-    animation_interval = 0.5
+    animation_interval = 1
     
 
     animation_ttl = range(0, 9)
 
-    input_str = event.pattern_match.group(1)
+   # input_str = event.pattern_match.group(1)
 
-    if input_str == "menoob":
+    #if input_str == "menoob":
 
-        await event.edit(input_str)
+    await event.edit("menoob")
 
-        animation_chars = [
+    animation_chars = [
             "EvErYbOdY",
             "iZ",
             "BiGGeSt",
@@ -85,13 +80,15 @@ async def _(event):
             "EvErYbOdY iZ BiGGeSt NoOoB uNtiL i aRriVe 😈"
         ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
 
 
             await event.edit(animation_chars[i % 9])
             await asyncio.sleep(animation_interval) 
             
-@borg.on(admin_cmd("(.*)"))
+            
+            
+@borg.on(admin_cmd(pattern="upro"))            
 
 async def _(event):
 
@@ -99,18 +96,18 @@ async def _(event):
 
         return
 
-    animation_interval = 0.5
+    animation_interval = 1
     
 
     animation_ttl = range(0, 8)
 
-    input_str = event.pattern_match.group(1)
+   # input_str = event.pattern_match.group(1)
 
-    if input_str == "upro":
+    #if input_str == "upro":
 
-        await event.edit(input_str)
+    await event.edit("upro")
 
-        animation_chars = [
+    animation_chars = [
             "EvErYbOdY",
             "iZ",
             "PeRu" ,
@@ -121,13 +118,14 @@ async def _(event):
             "EvErYbOdY iZ PeRu uNtiL YoU aRriVe 😈"
         ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
 
 
             await event.edit(animation_chars[i % 8])
             await asyncio.sleep(animation_interval)  
             
-@borg.on(admin_cmd("(.*)"))
+            
+@borg.on(admin_cmd(pattern="mepro"))            
 
 async def _(event):
 
@@ -135,18 +133,18 @@ async def _(event):
 
         return
 
-    animation_interval = 0.5
+    animation_interval = 1
     
 
     animation_ttl = range(0, 8)
 
-    input_str = event.pattern_match.group(1)
+  #  input_str = event.pattern_match.group(1)
 
-    if input_str == "mepro":
+   # if input_str == "mepro":
 
-        await event.edit(input_str)
+    await event.edit("mepro")
 
-        animation_chars = [
+    animation_chars = [
             "EvErYbOdY",
             "iZ",
             "PeRu" ,
@@ -157,7 +155,7 @@ async def _(event):
             "EvErYbOdY iZ PeRu uNtiL i aRriVe 😈"
         ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
 
 
             await event.edit(animation_chars[i % 8])

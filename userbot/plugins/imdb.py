@@ -1,4 +1,3 @@
-
 # For UniBorg
 # Copyright (c) JeepBot | 2019 
 # (c) JeepBot is not occur to all modules in here
@@ -15,12 +14,12 @@ import re
 import subprocess
 import time
 from datetime import datetime
-from uniborg.util import admin_cmd
+from userbot.utils import admin_cmd
 
 langi = "en"
 
 #kanged from Blank-x ;---;
-@borg.on(admin_cmd("imdb (.*)", outgoing=True)) 
+@borg.on(admin_cmd(pattern="imdb (.*)", outgoing=True)) 
 async def imdb(e):
  try:
     movie_name = e.pattern_match.group(1)

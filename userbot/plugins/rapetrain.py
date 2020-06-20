@@ -4,7 +4,7 @@ Available Commands:
 
 .repe
 
-kk..."""
+build by legend @r4v4n4 , if u edit it then u r gay..."""
 
 from telethon import events
 
@@ -63,7 +63,7 @@ async def _(event):
             "🚃🚃🚃",
             "🚃🚃",
             "🚃",
-            "**RApED**"
+            "**rApEd**"
  ]
 
         for i in animation_ttl:

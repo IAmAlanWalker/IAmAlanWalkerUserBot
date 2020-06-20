@@ -2,6 +2,7 @@ from coffeehouse.lydia import LydiaAI
 from coffeehouse.api import API
 import asyncio
 from telethon import events
+from userbot import CMD_HELP
 
 # Non-SQL Mode
 ACC_LYDIA = {}
@@ -11,27 +12,13 @@ if Var.LYDIA_API_KEY:
     api_client = API(api_key)
     lydia = LydiaAI(api_client)
 
-@command(pattern="^.repcf", outgoing=True)
-async def repcf(event):
-    if event.fwd_from:
-        return
-    await event.edit("Processing...")
-    try:
-        session = lydia.create_session()
-        session_id = session.id
-        reply = await event.get_reply_message()
-        msg = reply.text
-        text_rep = session.think_thought(msg)
-        await event.edit("**sun bsdk**: {0}".format(text_rep))
-    except Exception as e:
-        await event.edit(str(e))
 
 @command(pattern="^.addcf", outgoing=True)
 async def addcf(event):
     if event.fwd_from:
         return
     await event.edit("Running on Non-SQL mode for now...")
-    await asyncio.sleep(3)
+    await asyncio.sleep(2)
     await event.edit("Processing...")
     reply_msg = await event.get_reply_message()
     if reply_msg:
@@ -40,7 +27,7 @@ async def addcf(event):
         if reply_msg.from_id is None:
             return await event.edit("Invalid user type.")
         ACC_LYDIA.update({(event.chat_id & reply_msg.from_id): session})
-        await event.edit("Lydia successfully (re)enabled for user: {} in chat: {}".format(str(reply_msg.from_id), str(event.chat_id)))
+        await event.edit("auto reply succesfully enabled")
     else:
         await event.edit("Reply to a user to activate Lydia AI on them")
 
@@ -49,12 +36,12 @@ async def remcf(event):
     if event.fwd_from:
         return
     await event.edit("Running on Non-SQL mode for now...")
-    await asyncio.sleep(3)
+    await asyncio.sleep(2)
     await event.edit("Processing...")
     reply_msg = await event.get_reply_message()
     try:
         del ACC_LYDIA[event.chat_id & reply_msg.from_id]
-        await event.edit("Lydia successfully disabled for user: {} in chat: {}".format(str(reply_msg.from_id), str(event.chat_id)))
+        await event.edit("auto reply disabled")
     except Exception:
         await event.edit("This person does not have Lydia activated on him/her.")
 
@@ -71,6 +58,19 @@ async def user(event):
             for i in range(len(text_rep)):
                 wait_time = wait_time + 0.1
             await asyncio.sleep(wait_time)
-            await event.reply(text_rep)
+            await event.reply("💫" + text_rep)
     except (KeyError, TypeError):
         return
+    
+    
+    
+CMD_HELP.update({
+    "lydia":
+    ".addcf reply to a user\
+    \nUSAGE: your bot will auto reply to the tagged user until you stops it by `.remcf`\
+    \n\n.remcf reply to the user to who you want to disable the lydia\
+    \n\n for functioning this plugin you need to set the heroku var\
+    \n the key is `LYDIA_API_KEY` and get var from `https://coffeehouse.intellivoid.net/`\
+"
+})    
+    

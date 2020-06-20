@@ -10,8 +10,6 @@ from telethon import events
 
 from datetime import datetime
 
-from uniborg.util import admin_cmd
-
 import importlib.util
 
 import asyncio
@@ -23,7 +21,9 @@ import importlib.util
 
 
 
-@borg.on(events.NewMessage(outgoing=True, pattern='^\.(q?w)char'))
+from userbot.utils import admin_cmd
+
+@borg.on(admin_cmd(pattern=f"wchar", allow_sudo=True))
 
 async def timer_blankx(e):
 
@@ -41,7 +41,7 @@ async def timer_blankx(e):
 
   await asyncio.sleep(1)
 
- if e.pattern_match.group(1) == 'f':
+ if e.pattern_match.group(1) == '100':
 
   await e.edit("`Tesla Wireless Charging (beta) Completed...\nDevice Detected: Nokia 1100 (Space Grey Varient)\nBattery Percentage:` [100%](https://telegra.ph/file/a45aa7450c8eefed599d9.mp4) ", link_preview=True)
 

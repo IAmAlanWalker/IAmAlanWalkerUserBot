@@ -10,12 +10,12 @@ import traceback
 import asyncio
 import sys
 import io
-from uniborg.util import admin_cmd
+from userbot.utils import admin_cmd
 
 
-@borg.on(admin_cmd("eval"))
+@borg.on(admin_cmd(pattern="eval"))
 async def _(event):
-    if event.fwd_from:
+    if event.fwd_from or event.via_bot_id:
         return
     await event.edit("Processing ...")
     cmd = event.text.split(" ", maxsplit=1)[1]

@@ -1,23 +1,19 @@
-"""
-
+"""Emoji
 Available Commands:
-
-.sux
-
 .fuk
-
-.kiss"""
+.sex
+.kiss
+"""
 
 from telethon import events
 
 import asyncio
+from userbot.utils import admin_cmd
 
 
 
-
-
+@borg.on(admin_cmd(pattern="fuk"))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
 async def _(event):
 
     if event.fwd_from:
@@ -53,8 +49,8 @@ async def _(event):
             await event.edit(animation_chars[i % 4])
 
 
+@borg.on(admin_cmd(pattern="sex"))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
 async def _(event):
 
     if event.fwd_from:
@@ -67,7 +63,7 @@ async def _(event):
 
     input_str = event.pattern_match.group(1)
 
-    if input_str == "sux":
+    if input_str == "sex":
 
         await event.edit(input_str)
 
@@ -90,19 +86,11 @@ async def _(event):
             await event.edit(animation_chars[i % 4])
 
 
-""
-
-
-from telethon import events
-
-import asyncio
 
 
 
-
-
+@borg.on(admin_cmd(pattern="kiss"))
 @borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
-
 async def _(event):
 
     if event.fwd_from:

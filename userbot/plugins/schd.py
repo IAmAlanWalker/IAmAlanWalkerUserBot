@@ -3,9 +3,10 @@ Syntax: .schd <time_in_seconds> ;=; <message to send>"""
 from telethon import events
 import asyncio
 from userbot.utils import admin_cmd
+from userbot import CMD_HELP
+from userbot.utils import admin_cmd
 
-
-@borg.on(admin_cmd("schd ?(.*)"))
+@borg.on(admin_cmd(pattern="schd ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

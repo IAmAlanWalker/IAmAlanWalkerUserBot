@@ -55,7 +55,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Please get your own Userbot, join @HardcoreUserbot. Don't use mine!"
+            reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
     @tgbot.on(events.callbackquery.CallbackQuery(  # pylint:disable=E0602
         data=re.compile(b"us_plugin_(.*)")
@@ -69,7 +69,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 help_string += "\n"
         except:
             pass
-        if help_string is "":
+        if help_string == "":
             reply_pop_up_alert = "{} is useless".format(plugin_name)
         else:
             reply_pop_up_alert = help_string
@@ -77,7 +77,8 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             © Userbot".format(plugin_name)
         try:
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-        except:
+        except: 
+            #https://github.com/Dark-Princ3/X-tra-Telegram/commit/275fd0ec26b284d042bf56de325472e088e6f364#diff-2b2df8998ff11b6c15893b2c8d5d6af3
             with io.BytesIO(str.encode(reply_pop_up_alert)) as out_file:
                 out_file.name = "{}.txt".format(plugin_name)
                 await bot.send_file(
@@ -88,9 +89,8 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                     caption=plugin_name
                 )
 
-
 def paginate_help(page_number, loaded_plugins, prefix):
-    number_of_rows = 7
+    number_of_rows = Config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
     number_of_cols = 2
     helpable_plugins = []
     for p in loaded_plugins:
@@ -98,7 +98,7 @@ def paginate_help(page_number, loaded_plugins, prefix):
             helpable_plugins.append(p)
     helpable_plugins = sorted(helpable_plugins)
     modules = [custom.Button.inline(
-        "{} {}".format("✨", x),
+        "{} {}".format("👉", x),
         data="us_plugin_{}".format(x))
         for x in helpable_plugins]
     pairs = list(zip(modules[::number_of_cols], modules[1::number_of_cols]))
@@ -109,7 +109,7 @@ def paginate_help(page_number, loaded_plugins, prefix):
     if len(pairs) > number_of_rows:
         pairs = pairs[modulo_page * number_of_rows:number_of_rows * (modulo_page + 1)] + \
             [
-            (custom.Button.inline("Previous", data="{}_prev({})".format(prefix, modulo_page)),
-             custom.Button.inline("Next", data="{}_next({})".format(prefix, modulo_page)))
+            (custom.Button.inline("⏪", data="{}_prev({})".format(prefix, modulo_page)),
+             custom.Button.inline("⏩", data="{}_next({})".format(prefix, modulo_page)))
         ]
     return pairs

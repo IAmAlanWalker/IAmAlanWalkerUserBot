@@ -1,8 +1,7 @@
 """ Powered by @Google
 Available Commands:
-.google <query>
-.google image <query>
-.google reverse search"""
+.gs <query>
+.grs """
 
 import asyncio
 import os
@@ -16,69 +15,55 @@ from urllib.error import HTTPError
 from google_images_download import google_images_download
 from gsearch.googlesearch import search
 from userbot.utils import admin_cmd
-
+import time
+import shutil
+import re
+from re import findall
+from search_engine_parser import GoogleSearch
+from asyncio import sleep
+from userbot.utils import register
+from telethon.tl.types import DocumentAttributeAudio
+from userbot.uniborgConfig import Config
 
 def progress(current, total):
     logger.info("Downloaded {} of {}\nCompleted {}".format(current, total, (current / total) * 100))
+    
+BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
+BOTLOG = True
 
-
-@borg.on(admin_cmd("go (.*)"))
-async def _(event):
-    await event.edit("`UniBorg is Getting Information From Google Please Wait... ✍️🙇`")
-    match_ = event.pattern_match.group(1)
-    match = quote_plus(match_)
-    if not match:
-        await event.edit("`I can't search nothing !!`")
-        return
-    plain_txt = get(f"https://www.startpage.com/do/search?cmd=process_search&query={match}", 'html').text
-    soup = BeautifulSoup(plain_txt, "lxml")
+@register(outgoing=True, pattern=r"^\.gs (.*)")
+async def gsearch(q_event):
+    """ For .google command, do a Google search. """
+    match = q_event.pattern_match.group(1)
+    page = findall(r"page=\d+", match)
+    try:
+        page = page[0]
+        page = page.replace("page=", "")
+        match = match.replace("page=" + page[0], "")
+    except IndexError:
+        page = 1
+    search_args = (str(match), int(page))
+    gsearch = GoogleSearch()
+    gresults = await gsearch.async_search(*search_args)
     msg = ""
-    for result in soup.find_all('a', {'class': 'w-gl__result-title'}):
-        title = result.text
-        link = result.get('href')
-        msg += f"**{title}**{link}\n"
-    await event.edit(
-        "**Google Search Query:**\n\n`" + match_ + "`\n\n**Results:**\n" + msg,
-        link_preview = False)
-
-
-@borg.on(admin_cmd("google image (.*)"))
-async def _(event):
-    if event.fwd_from:
-        return
-    start = datetime.now()
-    await event.edit("Processing ...")
-    input_str = event.pattern_match.group(1)
-    response = google_images_download.googleimagesdownload()
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
-    arguments = {
-        "keywords": input_str,
-        "limit": Config.TG_GLOBAL_ALBUM_LIMIT,
-        "format": "jpg",
-        "delay": 1,
-        "safe_search": True,
-        "output_directory": Config.TMP_DOWNLOAD_DIRECTORY
-    }
-    paths = response.download(arguments)
-    lst = paths[input_str]
-    await borg.send_file(
-        event.chat_id,
-        lst,
-        caption=input_str,
-        reply_to=event.message.id,
-        progress_callback=progress
-    )
-    for each_file in lst:
-        os.remove(each_file)
-    end = datetime.now()
-    ms = (end - start).seconds
-    await event.edit("searched Google for {} in {} seconds.".format(input_str, ms), link_preview=False)
-    await asyncio.sleep(5)
-    await event.delete()
-
-
-@borg.on(admin_cmd("google reverse search"))
+    for i in range(len(gresults["links"])):
+        try:
+            title = gresults["titles"][i]
+            link = gresults["links"][i]
+            desc = gresults["descriptions"][i]
+            msg += f"[{title}]({link})\n`{desc}`\n\n"
+        except IndexError:
+            break
+    await q_event.edit("**Search Query:**\n`" + match + "`\n\n**Results:**\n" +
+                       msg,
+                       link_preview=False)
+    if BOTLOG:
+        await q_event.client.send_message(
+            BOTLOG_CHATID,
+            "Google Search query `" + match + "` was executed successfully",
+        )
+    
+@borg.on(admin_cmd(pattern="grs"))
 async def _(event):
     if event.fwd_from:
         return
@@ -127,6 +112,6 @@ async def _(event):
         ms = (end - start).seconds
         OUTPUT_STR = """{img_size}
 **Possible Related Search**: <a href="{prs_url}">{prs_text}</a>
-
 More Info: Open this <a href="{the_location}">Link</a> in {ms} seconds""".format(**locals())
     await event.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
+    

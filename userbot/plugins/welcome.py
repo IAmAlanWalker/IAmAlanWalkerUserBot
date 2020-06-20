@@ -2,7 +2,7 @@ from telethon import events
 from telethon.utils import pack_bot_file_id
 from userbot.plugins.sql_helper.welcome_sql import get_current_welcome_settings, \
     add_welcome_setting, rm_welcome_setting, update_previous_welcome
-
+from userbot import CMD_HELP
 
 @bot.on(events.ChatAction())  # pylint:disable=E0602
 async def _(event):
@@ -88,3 +88,19 @@ async def _(event):
         await event.edit(
             "No Welcome Message found"
         )
+        
+        
+        
+CMD_HELP.update({
+    "welcome":
+    "\
+.savewelcome <welcome message> or reply to a message with .setwelcome\
+\nUsage: Saves the message as a welcome note in the chat.\
+\n\nAvailable variables for formatting welcome messages :\
+\n`{mention}, {title}, {count}, {first}, {last}, {fullname}, {userid}, {username}, {my_first}, {my_fullname}, {my_last}, {my_mention}, {my_username}`\
+\n\n.listwelcome\
+\nUsage: Check whether you have a welcome note in the chat.\
+\n\n.clearwelcome\
+\nUsage: Deletes the welcome note for the current chat.\
+"
+})        

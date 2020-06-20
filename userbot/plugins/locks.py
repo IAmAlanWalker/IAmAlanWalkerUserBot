@@ -6,9 +6,9 @@ DB Options: bots, commands, email, forward, url"""
 from telethon import events, functions, types
 from userbot.plugins.sql_helper.locks_sql import update_lock, is_locked, get_locks
 from userbot.utils import admin_cmd
+from userbot import CMD_HELP
 
-
-@borg.on(admin_cmd("lock( (?P<target>\S+)|$)"))
+@borg.on(admin_cmd(pattern="lock( (?P<target>\S+)|$)"))
 async def _(event):
      # Space weirdness in regex required because argument is optional and other
      # commands start with ".lock"
@@ -82,7 +82,7 @@ async def _(event):
             )
 
 
-@borg.on(admin_cmd("unlock ?(.*)"))
+@borg.on(admin_cmd(pattern="unlock ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -99,7 +99,7 @@ async def _(event):
         )
 
 
-@borg.on(admin_cmd("curenabledlocks"))
+@borg.on(admin_cmd(pattern="curenabledlocks"))
 async def _(event):
     if event.fwd_from:
         return
@@ -230,3 +230,15 @@ async def _(event):
                 ban_reason_msg = await event.reply(
                     "!warn [user](tg://user?id={}) Please Do Not Add BOTs to this chat.".format(users_added_by)
                 )
+                    
+CMD_HELP.update({
+    "locks":
+    ".lock <all (or) type(s)> or .unlock <all (or) type(s)>\
+\nUsage: Allows you to lock/unlock some common message types in the chat.\
+[NOTE: Requires proper admin rights in the chat !!]\
+\n\nAvailable message types to lock/unlock are: \
+\nAPI Options: msg, media, sticker, gif, gamee, ainline, gpoll, adduser, cpin, changeinfo\
+\nDB Options: bots, commands, email, forward, url\
+\n\n.curenabledlocks\
+\nUsage: to see the active locks"
+})

@@ -16,7 +16,9 @@
 
 """
 ----------------------------------------------------------------
-FO Plox
+All Thenks goes to Emily ( The creater of This Plugin)
+\nSome credits goes to me ( @kirito6969 ) for ported this plugin
+\nand `SnapDragon for` Helping me.
 ----------------------------------------------------------------
 
 Type `.poto` for get **All profile pics of that User**
@@ -78,6 +80,6 @@ if 1 == 1:
                 send_photos = await event.client.download_media(photos[id - 1])
                 await event.client.send_file(event.chat_id, send_photos)
             else:
-                await event.edit("```No photo found of this NIBBI. Now u Die!```")
+                await event.edit("```No photo found of this NIBBA / NIBBI. Now u Die!```")
                 await asyncio.sleep(8)
                 return
