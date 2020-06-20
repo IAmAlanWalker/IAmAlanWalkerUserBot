@@ -1,7 +1,7 @@
 {
-  "name": "π.$",
-  "description": "Userbot created by a SNAPDRAGON and custom fork by https://t.me/mrconfused contact @mrconfused for support",
-  "logo": "https://telegra.ph/file/f8ab330abd9a8a43f5a40.jpg",
+  "name": "Sensible Userbot",
+  "description": "Userbot created by Ceo White Hat Cracks",
+  "logo": " https://telegra.ph/file/de327583911bc8b549f7d.jpg",
   "keywords": [
     "telegram",
     "userbot",
@@ -9,7 +9,7 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/sandy1709/catuserbot/",
+  "repository": "https://github.com/spandey112/SensibleUserbot/",
   "website": "#TODO",
   "success_url": "#TODO",
   "env": {
