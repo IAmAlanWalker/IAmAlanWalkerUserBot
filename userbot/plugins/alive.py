@@ -19,9 +19,9 @@ async def amireallyalive(alive):
                      "`☞Bot Creator- @Ceowhitehatcracks\n"
                      "`Some Bot Staff- @sin_code @blackhathacker7 MR WHITE\n"
                      "`☞Database Status: Databases functioning normally!\n\n`"
-                     "`☞Always with you, my master!\n`"
-                     f"`☞My peru owner`: [{DEFAULTUSER}](https://github.com/sandy1709/catuserbot)\n"
-                     #"[Deploy this userbot Now](https://github.com/sandy1709/catuserbot)"
+                     "`☞Jarvis Versioni Mark XLLLX\n`"
+                     f"`☞My peru owner`: [{DEFAULTUSER}](https://github.com/spandey112/SensibleUserbot)\n"
+                     #"[Deploy this userbot Now](https://github.com/spandey112/SensibleUserbot/)"
                     )
     
     
