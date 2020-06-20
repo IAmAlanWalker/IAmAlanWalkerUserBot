@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # In[ ]:
 #  coding: utf-8
-# Adapted from OUB for X-tra-Telegram
+
 ###### Searching and Downloading Google Images to the local disk ######
 
 # Import Libraries

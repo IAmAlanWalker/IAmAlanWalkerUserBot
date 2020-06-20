@@ -1,17 +1,37 @@
 from userbot import bot
 from telethon import events
-from var import Var
 from pathlib import Path
-from userbot.uniborgConfig import Config
+from var import Var
 from userbot import LOAD_PLUG
-from userbot import CMD_LIST
+from userbot import CMD_LIST, SUDO_LIST
 import re
 import logging
 import inspect
+import math
+import os
+import time
+import asyncio
+from traceback import format_exc
+from time import gmtime, strftime
+import subprocess
+import sys
+import traceback
+import datetime
+
+from telethon.tl.functions.messages import GetPeerDialogsRequest
+
+from typing import List
+
+ENV = bool(os.environ.get("ENV", False))
+if ENV:
+    from userbot.uniborgConfig import Config
+else:
+    if os.path.exists("config.py"):
+        from config import Development as Config
 
 def command(**args):
     args["func"] = lambda e: e.via_bot_id is None
-    
+
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -50,7 +70,7 @@ def command(**args):
                 pass
 
         if allow_sudo:
-            args["from_users"] = list(Var.SUDO_USERS)
+            args["from_users"] = list(Config.SUDO_USERS)
             # Mutually exclusive with outgoing (can only set one of either).
             args["incoming"] = True
         del allow_sudo
@@ -58,6 +78,11 @@ def command(**args):
             del args["allow_sudo"]
         except:
             pass
+        
+        args["blacklist_chats"] = True
+        black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
+        if len(black_list_chats) > 0:
+            args["chats"] = black_list_chats
 
         if "allow_edited_updates" in args:
             del args['allow_edited_updates']
@@ -73,8 +98,8 @@ def command(**args):
             return func
 
         return decorator
-
-
+    
+    
 def load_module(shortname):
     if shortname.startswith("__"):
         pass
@@ -133,7 +158,6 @@ def remove_plugin(shortname):
 
 def admin_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
-    
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -156,7 +180,7 @@ def admin_cmd(pattern=None, **args):
     args["outgoing"] = True
     # should this command be available for other users?
     if allow_sudo:
-        args["from_users"] = list(Var.SUDO_USERS)
+        args["from_users"] = list(Config.SUDO_USERS)
         # Mutually exclusive with outgoing (can only set one of either).
         args["incoming"] = True
         del args["allow_sudo"]
@@ -164,6 +188,12 @@ def admin_cmd(pattern=None, **args):
     # error handling condition check
     elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
+
+    # add blacklist chats, UB should not respond in these chats
+    args["blacklist_chats"] = True
+    black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
+    if len(black_list_chats) > 0:
+        args["chats"] = black_list_chats
 
     # add blacklist chats, UB should not respond in these chats
     allow_edited_updates = False
@@ -176,31 +206,19 @@ def admin_cmd(pattern=None, **args):
 
     return events.NewMessage(**args)
 
-""" Userbot module for managing events.
- One of the main components of the userbot. """
 
-from telethon import events
-import asyncio
-from userbot import bot
-from traceback import format_exc
-from time import gmtime, strftime
-import math
-import subprocess
-import sys
-import traceback
-import datetime
 
 
 def register(**args):
-    """ Register a new event. """
     args["func"] = lambda e: e.via_bot_id is None
-    
+    """ Register a new event. """
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
     file_test = file_test.stem.replace(".py", "")
     pattern = args.get('pattern', None)
-    disable_edited = args.get('disable_edited', False)
+    disable_edited = args.get('disable_edited', True)
+    allow_sudo = args.get("allow_sudo", False)
 
     if pattern is not None and not pattern.startswith('(?i)'):
         args['pattern'] = '(?i)' + pattern
@@ -223,6 +241,23 @@ def register(**args):
                 CMD_LIST.update({file_test: [cmd]})
         except:
             pass
+        
+    if allow_sudo:
+        args["from_users"] = list(Config.SUDO_USERS)
+        # Mutually exclusive with outgoing (can only set one of either).
+        args["incoming"] = True
+        del args["allow_sudo"]
+
+    # error handling condition check
+    elif "incoming" in args and not args["incoming"]:
+        args["outgoing"] = True
+
+    # add blacklist chats, UB should not respond in these chats
+    args["blacklist_chats"] = True
+    black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
+    if len(black_list_chats) > 0:
+        args["chats"] = black_list_chats    
+        
 
     def decorator(func):
         if not disable_edited:
@@ -239,16 +274,60 @@ def register(**args):
 
 
 def errors_handler(func):
-    async def wrapper(event):
+    async def wrapper(errors):
         try:
-            return await func(event)
-        except Exception:
-            pass
+            await func(errors)
+        except BaseException:
+
+            date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+            new = {
+                'error': str(sys.exc_info()[1]),
+                'date': datetime.datetime.now()
+            }
+
+            text = "**USERBOT CRASH REPORT**\n\n"
+
+            link = "[here](https://t.me/sn12384)"
+            text += "If you wanna you can report it"
+            text += f"- just forward this message {link}.\n"
+            text += "Nothing is logged except the fact of error and date\n"
+
+            ftext = "\nDisclaimer:\nThis file uploaded ONLY here,"
+            ftext += "\nwe logged only fact of error and date,"
+            ftext += "\nwe respect your privacy,"
+            ftext += "\nyou may not report this error if you've"
+            ftext += "\nany confidential data here, no one will see your data\n\n"
+
+            ftext += "--------BEGIN USERBOT TRACEBACK LOG--------"
+            ftext += "\nDate: " + date
+            ftext += "\nGroup ID: " + str(errors.chat_id)
+            ftext += "\nSender ID: " + str(errors.sender_id)
+            ftext += "\n\nEvent Trigger:\n"
+            ftext += str(errors.text)
+            ftext += "\n\nTraceback info:\n"
+            ftext += str(traceback.format_exc())
+            ftext += "\n\nError text:\n"
+            ftext += str(sys.exc_info()[1])
+            ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+
+            command = "git log --pretty=format:\"%an: %s\" -5"
+
+            ftext += "\n\n\nLast 5 commits:\n"
+
+            process = await asyncio.create_subprocess_shell(
+                command,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE)
+            stdout, stderr = await process.communicate()
+            result = str(stdout.decode().strip()) \
+                + str(stderr.decode().strip())
+
+            ftext += result
+
     return wrapper
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
-    """Generic progress_callback for both
-    upload.py and download.py"""
+    """Generic progress_callback for uploads and downloads."""
     now = time.time()
     diff = now - start
     if round(diff % 10.00) == 0 or current == total:
@@ -257,9 +336,9 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
         elapsed_time = round(diff) * 1000
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
-        progress_str = "[{0}{1}]\nProgress: {2}%\n".format(
-            ''.join(["█" for i in range(math.floor(percentage / 5))]),
-            ''.join(["░" for i in range(20 - math.floor(percentage / 5))]),
+        progress_str = "[{0}{1}] {2}%\n".format(
+            ''.join(["▰" for i in range(math.floor(percentage / 10))]),
+            ''.join(["▱" for i in range(10 - math.floor(percentage / 10))]),
             round(percentage, 2))
         tmp = progress_str + \
             "{0} of {1}\nETA: {2}".format(
@@ -309,3 +388,52 @@ class Loader():
         self.Var = Var
         bot.add_event_handler(func, events.NewMessage(**args))
 
+        
+
+def sudo_cmd(pattern=None, **args):
+    args["func"] = lambda e: e.via_bot_id is None
+    stack = inspect.stack()
+    previous_stack_frame = stack[1]
+    file_test = Path(previous_stack_frame.filename)
+    file_test = file_test.stem.replace(".py", "")
+    allow_sudo = args.get("allow_sudo", False)
+
+    # get the pattern from the decorator
+    if pattern is not None:
+        if pattern.startswith("\#"):
+            # special fix for snip.py
+            args["pattern"] = re.compile(pattern)
+        else:
+            args["pattern"] = re.compile("\." + pattern)
+            cmd = "." + pattern
+            try:
+                SUDO_LIST[file_test].append(cmd)
+            except:
+                SUDO_LIST.update({file_test: [cmd]})
+
+    args["outgoing"] = True
+    # should this command be available for other users?
+    if allow_sudo:
+        args["from_users"] = list(Config.SUDO_USERS)
+        # Mutually exclusive with outgoing (can only set one of either).
+        args["incoming"] = True
+        del args["allow_sudo"]
+
+    # error handling condition check
+    elif "incoming" in args and not args["incoming"]:
+        args["outgoing"] = True
+
+    # add blacklist chats, UB should not respond in these chats
+    args["blacklist_chats"] = True
+    black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
+    if len(black_list_chats) > 0:
+        args["chats"] = black_list_chats
+
+    # add blacklist chats, UB should not respond in these chats
+    allow_edited_updates = False
+    if "allow_edited_updates" in args and args["allow_edited_updates"]:
+        allow_edited_updates = args["allow_edited_updates"]
+        del args["allow_edited_updates"]
+    # check if the plugin should listen for outgoing 'messages'
+    is_message_enabled = True
+    return events.NewMessage(**args)

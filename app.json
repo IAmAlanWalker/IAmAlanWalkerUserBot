@@ -1,7 +1,7 @@
 {
-  "name": "SensibleUserbot",
-  "description": "Userbot created by a @ceowhitehatcracks , Join https://t.me/Sensible_userbot for any problems or support",
-  "logo": "https://telegra.ph/file/1b1304649ee3ecd281322.jpg",
+  "name": "π.$",
+  "description": "Userbot created by a SNAPDRAGON and custom fork by https://t.me/mrconfused contact @mrconfused for support",
+  "logo": "https://telegra.ph/file/f8ab330abd9a8a43f5a40.jpg",
   "keywords": [
     "telegram",
     "userbot",
@@ -9,7 +9,7 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/spandey112/SensibleUserbot/",
+  "repository": "https://github.com/sandy1709/catuserbot/",
   "website": "#TODO",
   "success_url": "#TODO",
   "env": {
@@ -19,8 +19,12 @@
     },
     "TEMP_DOWNLOAD_DIRECTORY": {
       "description": "Where downloaded files will go.",
-      "value": "./userbot/DOWNLOADS/",
+      "value": "./DOWNLOADS/",
       "required": false
+    },
+    "ALIVE_NAME": {
+      "description": "give your name",
+      "value": ""
     },
     "APP_ID": {
       "description": "Get this value from my.telegram.org! Please do not steal",
@@ -34,49 +38,47 @@
       "description": "Get this value by running python3 telesetup.py locally",
       "value": ""
     },
+    "TG_BOT_USER_NAME_BF_HER": {
+      "description": "Needed for inline buttons maker. Make a bot at http://telegram.dog/BotFather and get the username of your bot",
+      "value": ""
+    },
+    "TG_BOT_TOKEN_BF_HER": {
+      "description": "Needed for inline buttons maker. Make a bot at http://telegram.dog/BotFather and get the token of your bot.Worth it. Get it.",
+      "value": ""
+    },
+    "MAX_FLOOD_IN_P_M_s": {
+      "description": "Maximum number of messages a person can send in pm before getting blocked. Value must be an integer. 6 by default.",
+      "value": "6",
+      "required": false
+    },
+    "OCR_SPACE_API_KEY": {
+      "description": "Required for OCR functionality. Get from https://ocr.space/ocrapi",
+      "value": "",
+      "required": false
+    },
+    "REM_BG_API_KEY": {
+      "description": "Required for Removing image background functionality. Get from https://www.remove.bg/",
+      "value": "",
+      "required": false
+    },
     "GITHUB_ACCESS_TOKEN": {
       "description": "Your Github Access Token for gitcommit plugin.Google 'Github access token' to find.",
       "value": "",
       "required": false
     },
     "GIT_REPO_NAME": {
-      "description": "Your repo name, but GITHUB_ACCESS_TOKEN must be setup first.",
+      "description": "Your repo name Example: sandy1709/catuserbot, but GITHUB_ACCESS_TOKEN must be setup first.",
       "value": "",
       "required": false
     },
     "LYDIA_API_KEY": {
-      "description": "Needed for Lydia AI. Get your API from https://coffeehouse.intellivoid.net/ .",
+      "description": "Needed for Lydia AI. Follow https://telegra.ph/Lydia-09-05 to get your API.",
       "value": "",
       "required": false
     },
-    "PRIVATE_GROUP_ID": {
-      "description": "Make a priavte group and put its ID here. helps in PMPermit and AFK.",
-      "value": "",
-      "required": true
-    },
-    "PRIVATE_GROUP_BOT_API_ID": {
-      "description": "Make a priavte group and put its ID here. helps in PMPermit and AFK. Put Same Value Of PRIVATE_GROUP_ID Here",
-      "value": "",
-      "required": true
-    },
-    "HEROKU_API_KEY": {
-      "description": "Go to https://dashboard.heroku.com/account, scroll down and press Reveal API.Required for updater to work.",
-      "value": "",
-      "required": false
-    },
-    "SUDO_USERS": {
-      "description": "Makes your acc and bot stable",
-      "value": "1037944593",
-      "required": false
-    },
-    "HEROKU_APP_NAME": {
-      "description": "The Value of App Name you filled in right on top.Required for updater to work.",
-      "value": "",
-      "required": false
-    },
-    "TG_BOT_TOKEN_BF_HER": {
-      "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the token of your bot.Worth it. Get it.",
-      "value": "",
+    "UB_BLACK_LIST_CHAT": {
+      "description": "set blacklist_chats where you do not want userbot features",
+      "value": "-1051754159",
       "required": false
     },
     "CHROME_BIN": {
@@ -89,24 +91,14 @@
       "value": "/app/.chromedriver/bin/chromedriver",
       "required": false
     },
-    "TG_BOT_USER_NAME_BF_HER": {
-      "description": "Needed for inline buttons maker. Make a bot at [BotFather](http://telegram.dog/BotFather) and get the username of your bot",
-      "value": "",
-      "required": false
-    },
     "DOWNLOAD_PFP_URL_CLOCK": {
       "description": "Needed for autopic module. A url that is a preview link of your Profile Pic",
       "value": "",
       "required": false
     },
-    "ALIVE_NAME": {
-      "description": "Your Telegram Username. ",
-      "value": "",
-      "required": false
-    },
     "TZ": {
       "description": "Required for Correct Time on autopic/get time. Know your timezone from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
-      "value": "",
+      "value": "Asia/Kolkata",
       "required": false
     }
   },
