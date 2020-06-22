@@ -1,7 +1,7 @@
 # Sensible Userbot
 
 <p align="center">
-<img src="friday.png" alt="FRIDAY USERBOT">
+<img src="sensible.png" alt="Sensible USERBOT">
 
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
