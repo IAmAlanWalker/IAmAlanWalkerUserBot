@@ -21,7 +21,7 @@ Best User Bot To Manage Your Telegram Account
 
 I THANK Mr White Who Made video For Depying WATCH VIDEO ON HOW TO DEPLOY 
 
-<a href="https://youtu.be/xfHcm_e92eQ"><img src="https://img.shields.io/badge/How%20To-Deploy-red.svg?logo=Youtube"></a>
+<a href="https://www.youtube.com/playlist?list=PLX1HgLA9qoirRYh8jrggvFfHbZVvF5W8B"><img src="https://img.shields.io/badge/How%20To-Deploy-red.svg?logo=Youtube"></a>
 
 ## Installing Heroku 
 
