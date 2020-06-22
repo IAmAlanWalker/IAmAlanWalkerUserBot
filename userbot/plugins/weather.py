@@ -1,20 +1,15 @@
 """Get weather data using OpenWeatherMap
-Syntax: .weather <Location> """
-import logging
-logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
-                    level=logging.WARNING)
-import io
-import time
-from datetime import datetime, tzinfo
+Syntax: .weather <Location>
+.wttr <location> """
 
 import aiohttp
-
+import io
+import time
+from datetime import tzinfo, datetime
 from userbot.utils import admin_cmd
 
-from userbot.uniborgConfig import Config
 
-
-@borg.on(admin_cmd(pattern="weather (.*)"))
+@borg.on(admin_cmd(pattern="weathers (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -35,7 +30,7 @@ async def _(event):
     __maximum__ : {}°С
 **Humidity**: {}%
 **wind**: {}m/s
-clouds: {}hpa
+**clouds**: {}hpa
 **Sunrise**: {} {}
 **Sunset**: {} {}""".format(
                 input_str,

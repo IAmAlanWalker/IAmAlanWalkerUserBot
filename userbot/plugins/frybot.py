@@ -5,7 +5,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot.utils import admin_cmd
 
-@borg.on(admin_cmd(pattern="frybot ?(.*)"))
+@borg.on(admin_cmd("frybot ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -14,7 +14,7 @@ async def _(event):
        return
     reply_message = await event.get_reply_message() 
     if not reply_message.media:
-       await event.edit("```reply to media file```")
+       await event.edit("```reply to text message```")
        return
     chat = "@image_deepfrybot"
     sender = reply_message.sender

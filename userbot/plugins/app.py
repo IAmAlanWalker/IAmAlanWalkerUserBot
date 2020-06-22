@@ -1,24 +1,29 @@
 """Fetch App Details from Playstore.
 .app <app_name> to fetch app details.
-.appr <app_name>  to fetch app details with Xpl0iter request link.
-  © [cHAuHaN](http://t.me/amnd33p)"""
+.appr <app_name>  to fetch app details with Xpl0iter request link."""
+
 import requests
-import bs4 
+
+import bs4
+
 import re
-from userbot.utils import admin_cmd
+
+
+
 from telethon import *
-from userbot import *
-from telethon import events
-from bs4 import BeautifulSoup
-from platform import uname
-from userbot import ALIVE_NAME
+
 from userbot import CMD_HELP
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
-@borg.on(admin_cmd(pattern="app (.*)"))
-async def apk(event):
+from userbot.events import register
+
+
+@borg.on(events.NewMessage(pattern='.app (.*)'))
+
+@borg.on(events.MessageEdited(pattern='.app (.*)'))
+
+async def apk(e):
     try:
-        app_name = event.pattern_match.group(1)
+        app_name = e.pattern_match.group(1)
         remove_space = app_name.split(' ')
         final_name = '+'.join(remove_space)
         page = requests.get("https://play.google.com/store/search?q="+final_name+"&c=apps")
@@ -36,17 +41,20 @@ async def apk(event):
         app_details += "\n\n<code>Developer :</code> <a href='"+app_dev_link+"'>"+app_dev+"</a>"
         app_details += "\n<code>Rating :</code> "+app_rating.replace("Rated ", "⭐ ").replace(" out of ", "/").replace(" stars", "", 1).replace(" stars", "⭐ ").replace("five", "5")
         app_details += "\n<code>Features :</code> <a href='"+app_link+"'>View in Play Store</a>"
-        app_details += f"\n\n===> {DEFAULTUSER} <==="
-        await event.edit(app_details, link_preview = True, parse_mode = 'HTML')
+        app_details += "\n\n===> @FridayOT <==="
+        await e.edit(app_details, link_preview = True, parse_mode = 'HTML')
     except IndexError:
-        await event.edit("No result found in search. Please enter **Valid app name**")
+        await e.edit("No result found in search. Please enter **Valid app name**")
     except Exception as err:
-        await event.edit("Exception Occured:- "+str(err))
+        await e.edit("Exception Occured:- "+str(err))
 
-@borg.on(admin_cmd(pattern="appr (.*)"))
-async def apkr(event):
+@borg.on(events.NewMessage(pattern='.appr (.*)'))
+
+@borg.on(events.MessageEdited(pattern='.appr (.*)'))
+
+async def apkr(e):
     try:
-        app_name = event.pattern_match.group(1)
+        app_name = e.pattern_match.group(1)
         remove_space = app_name.split(' ')
         final_name = '+'.join(remove_space)
         page = requests.get("https://play.google.com/store/search?q="+final_name+"&c=apps")
@@ -65,19 +73,9 @@ async def apkr(event):
         app_details += "\n<code>Rating :</code> "+app_rating.replace("Rated ", "⭐ ").replace(" out of ", "/").replace(" stars", "", 1).replace(" stars", "⭐ ").replace("five", "5")
         app_details += "\n<code>Features :</code> <a href='"+app_link+"'>View in Play Store</a>"
         app_details += "\n\n<b>Download : </b> <a href='https://t.me/joinchat/JCu-H1NikiYDgNjpjPYd4A'>Request_Here</a>"
-        app_details += "\n\n===> @Xpl0iter <==="
-        await event.edit(app_details, link_preview = True, parse_mode = 'HTML')
+        app_details += "\n\n===> @FridayOt <==="
+        await e.edit(app_details, link_preview = True, parse_mode = 'HTML')
     except IndexError:
-        await event.edit("No result found in search. Please enter **Valid app name**")
+        await e.edit("No result found in search. Please enter **Valid app name**")
     except Exception as err:
-        await event.edit("Exception Occured:- "+str(err))
-
-        
-CMD_HELP.update({
-    "app":
-    ".app [app name]\
-\nUsage: searches the app in the playstore and provides the link to the app in playstore and fetchs app details \
-\n\n.appr [app name]\
-\nUsage: searches the app in the playstore and provides the link to the app in playstore and fetchs app details with Xpl0iter request link. \
-"
-})              
+        await e.edit("Exception Occured:- "+str(err))

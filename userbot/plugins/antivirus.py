@@ -4,9 +4,8 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from userbot.utils import admin_cmd,register
-from userbot import CMD_HELP
 
-@borg.on(admin_cmd(pattern="scan ?(.*)"))
+@borg.on(admin_cmd("scan ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -38,10 +37,3 @@ async def _(event):
           		await event.edit("`Please go to` @DrWebBot `and select your language.`") 
           	else: 
           			await event.edit(f"**Antivirus scan was completed. I got dem final results.**\n {response.message.message}")
-
-CMD_HELP.update({
-    "antivirus":
-    ".scan reply to media or file\
-    \n USEAGE: it scans the media or file and checks either any virus is in the file or media\
-"
-})      

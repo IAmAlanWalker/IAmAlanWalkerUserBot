@@ -1,18 +1,12 @@
+'''
+Fix by @mariodevs
+'''
 import os
 import sys
 from telethon.sessions import StringSession
 from telethon import TelegramClient
+
 from var import Var
-from pylast import LastFMNetwork, md5
-from logging import basicConfig, getLogger, INFO, DEBUG
-from distutils.util import strtobool as sb
-from pySmartDL import SmartDL
-from dotenv import load_dotenv
-import asyncio
-from userbot.helpers import memeshelper as memes
-import pylast
-from pySmartDL import SmartDL
-from requests import get
 
 os.system("pip install --upgrade pip")
 if Var.STRING_SESSION:
@@ -24,7 +18,6 @@ else:
 
 
 CMD_LIST = {}
-SUDO_LIST = {}
 # for later purposes
 CMD_HELP = {}
 INT_PLUG = ""
@@ -34,7 +27,13 @@ LOAD_PLUG = {}
 ENV = os.environ.get("ENV", False)
 """ PPE initialization. """
 
+from logging import basicConfig, getLogger, INFO, DEBUG
+from distutils.util import strtobool as sb
+import asyncio
 
+import pylast
+from pySmartDL import SmartDL
+from requests import get
 # Bot Logs setup:
 if bool(ENV):
     CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -68,23 +67,20 @@ if bool(ENV):
         pass
 
     # Userbot logging feature switch.
-    BOTLOG = sb(os.environ.get("BOTLOG", "True"))
-
+    BOTLOG = sb(os.environ.get("BOTLOG", "False"))
+    LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
+    
     # Bleep Blop, this is a bot ;)
     PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
-    # Heroku Credentials for updater.
-    HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
-    HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
-    HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
+
     # Console verbose logging
     CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
-    
+
     # SQL Database URI
     DB_URI = os.environ.get("DATABASE_URL", None)
 
     # OCR API key
     OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
-    LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
 
     # remove.bg API key
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
@@ -101,27 +97,37 @@ if bool(ENV):
 
     ANTI_SPAMBOT_SHOUT = sb(os.environ.get("ANTI_SPAMBOT_SHOUT", "False"))
 
+    # FedBan Premium Module
+    F_BAN_LOGGER_GROUP = os.environ.get("F_BAN_LOGGER_GROUP", None)
+
+# Heroku Credentials for updater.
+    HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
+    HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
+    HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
+
+   
     # Youtube API key
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
-    GENIUS_API_TOKEN = os.environ.get("GENIUS", None)
-    # Genius lyrics get this value from https://genius.com/developers both has same values
-    GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
+
     # Default .alive name
     ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
     AUTONAME = os.environ.get("AUTONAME", None)
-    LESS_SPAMMY = os.environ.get("LESS_SPAMMY", True)
-    MAX_FLOOD_IN_P_M_s = int(os.environ.get("MAX_FLOOD_IN_P_M_s", 5))
-    UPSTREAM_REPO_URL = os.environ.get(
-    "UPSTREAM_REPO_URL",
-    "https://github.com/sandy1709/catuserbot.git")
-    
+
     # Time & Date - Country and Time Zone
-    COUNTRY = str(os.environ.get("COUNTRY", ""))
+    COUNTRY = str(os.environ.get("COUNTRY", "India"))
 
     TZ_NUMBER = int(os.environ.get("TZ_NUMBER", 1))
+    FBAN_REASON = os.environ.get("FBAN_REASON", None)
+    FBAN_USER = os.environ.get("FBAN_USER", None)
+    # Clean Welcome
 
     # Clean Welcome
     CLEAN_WELCOME = sb(os.environ.get("CLEAN_WELCOME", "True"))
+
+    # Custom Module
+    CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
+    CUSTOM_STICKER_PACK_NAME = os.environ.get("CUSTOM_STICKER_PACK_NAME", None)
+    CUSTOM_ANIMATED_PACK_NAME = os.environ.get("CUSTOM_ANIMATED_PACK_NAME", None)
 
     # Last.fm Module
     BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -131,12 +137,12 @@ if bool(ENV):
     LASTFM_SECRET = os.environ.get("LASTFM_SECRET", None)
     LASTFM_USERNAME = os.environ.get("LASTFM_USERNAME", None)
     LASTFM_PASSWORD_PLAIN = os.environ.get("LASTFM_PASSWORD", None)
-    LASTFM_PASS = md5(LASTFM_PASSWORD_PLAIN)
-    if LASTFM_API and LASTFM_SECRET and LASTFM_USERNAME and LASTFM_PASS:
-        lastfm = LastFMNetwork(api_key=LASTFM_API,
-                               api_secret=LASTFM_SECRET,
-                               username=LASTFM_USERNAME,
-                               password_hash=LASTFM_PASS)
+    LASTFM_PASS = pylast.md5(LASTFM_PASSWORD_PLAIN)
+    if not LASTFM_USERNAME == "None":
+        lastfm = pylast.LastFMNetwork(api_key=LASTFM_API,
+                                      api_secret=LASTFM_SECRET,
+                                      username=LASTFM_USERNAME,
+                                      password_hash=LASTFM_PASS)
     else:
         lastfm = None
 
@@ -155,8 +161,6 @@ else:
 # and giving them correct perms to work properly.
 if not os.path.exists('bin'):
     os.mkdir('bin')
-    
-from userbot.helpers import fonts as fonts
 
 binaries = {
     "https://raw.githubusercontent.com/yshalsager/megadown/master/megadown":
@@ -178,6 +182,5 @@ LASTMSG = {}
 CMD_HELP = {}
 ISAFK = False
 AFKREASON = None
-# End of PaperPlaneExtended Support Vars
 
 

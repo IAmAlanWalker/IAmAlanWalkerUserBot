@@ -33,7 +33,7 @@ async def _(event):
             "👁👁\n  💋  =====> Abey Ja Na Randi",
             "👁👁\n  👄  =====> Abey Ja Na Betichod",
             "👁👁\n  👅  =====> Abey Ja Na Behenchod",    
-            "👁👁\n  💋  =====> Abey Ja Na NaMard",
+            "👁👁\n  💋  =====> Abey Ja Na Na Mard",
             "👁👁\n  👄  =====> Abey Ja Na Randi",
             "👁👁\n  👅  =====> Abey Ja Na Bhosdk",    
             "👁👁\n  💋  =====> Abey Ja Na Chutiye",

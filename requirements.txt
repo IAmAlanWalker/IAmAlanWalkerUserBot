@@ -1,2 +1,2 @@
-telethon
+telethon>=1.10.3
 -r requirements-startup.txt

@@ -10,7 +10,7 @@ from telethon import events, utils
 from telethon.tl import types
 from userbot.plugins.sql_helper.snips_sql import get_snips, add_snip, remove_snip, get_all_snips
 from userbot.utils import admin_cmd
-from userbot import CMD_HELP
+
 
 TYPE_TEXT = 0
 TYPE_PHOTO = 1
@@ -48,7 +48,7 @@ async def on_snip(event):
         await event.delete()
 
 
-@borg.on(admin_cmd(pattern="snips (.*)"))
+@borg.on(admin_cmd("snips (.*)"))
 async def on_snip_save(event):
     name = event.pattern_match.group(1)
     msg = await event.get_reply_message()
@@ -72,7 +72,7 @@ async def on_snip_save(event):
         await event.edit("Reply to a message with `snips keyword` to save the snip")
 
 
-@borg.on(admin_cmd(pattern="snipl"))
+@borg.on(admin_cmd("snipl"))
 async def on_snip_list(event):
     all_snips = get_all_snips()
     OUT_STR = "Available Snips:\n"
@@ -97,23 +97,8 @@ async def on_snip_list(event):
         await event.edit(OUT_STR)
 
 
-@borg.on(admin_cmd(pattern="snipd (\S+)"))
+@borg.on(admin_cmd("snipd (\S+)"))
 async def on_snip_delete(event):
     name = event.pattern_match.group(1)
     remove_snip(name)
     await event.edit("snip #{} deleted successfully".format(name))
-
-    
-CMD_HELP.update({
-    "snip":
-    "\
-#<snipname>\
-\nUsage: Gets the specified note.\
-\n\n.snips: reply to a message with .snips <notename>\
-\nUsage: Saves the replied message as a note with the notename. (Works with pics, docs, and stickers too!)\
-\n\n.snipl\
-\nUsage: Gets all saved notes in a chat.\
-\n\n.snipd <notename>\
-\nUsage: Deletes the specified note.\
-"
-})    

@@ -1,6 +1,6 @@
 """Reply to an image/sticker with .mmf` 'text on top' ; 'text on bottom
-base by: @r4v4n4
-created by: @A_Dark_Princ3
+base by: @pureindialover
+created by: @pureindialover
 if you change these, you gay.
 """
 
@@ -11,6 +11,9 @@ from PIL import Image
 import asyncio
 import time
 from datetime import datetime
+from hachoir.metadata import extractMetadata
+from hachoir.parser import createParser
+from pySmartDL import SmartDL
 from telethon.tl.types import DocumentAttributeVideo
 from uniborg.util import progress, humanbytes, time_formatter, admin_cmd
 import datetime
@@ -19,6 +22,8 @@ import math
 import os
 import requests
 import zipfile
+from telethon.errors.rpcerrorlist import StickersetInvalidError
+from telethon.errors import MessageNotModifiedError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.types import (
@@ -35,12 +40,12 @@ MessageMediaPhoto
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
 
-@borg.on(admin_cmd(pattern="mmf ?(.*)"))
+@borg.on(admin_cmd("memify ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
     if not event.reply_to_msg_id:
-       await event.edit("`Syntax: reply to an image with .mmf` 'text on top' ; 'text on bottom' ")
+       await event.edit("`Syntax: reply to an image with .mms` 'text on top' ; 'text on bottom' ")
        return
     reply_message = await event.get_reply_message() 
     if not reply_message.media:
@@ -49,13 +54,13 @@ async def _(event):
     chat = "@MemeAutobot"
     sender = reply_message.sender
     file_ext_ns_ion = "@memetime.png"
+    file = await borg.download_file(reply_message.media)
     uploaded_gif = None
     if reply_message.sender.bot:
        await event.edit("```Reply to actual users message.```")
        return
     else:
-       await event.edit("```Transfiguration Time! Mwahaha memifying this image! (」ﾟﾛﾟ)｣ ```")
-    file = await borg.download_file(reply_message.media)
+     await event.edit("```Transfiguration Time! Mwahaha memifying this image! (」ﾟﾛﾟ)｣ ```")
     
     async with borg.conversation("@MemeAutobot") as bot_conv:
           try:
@@ -112,11 +117,11 @@ async def _(event):
                 event.chat_id,
                 requires_file_name,
                 supports_streaming=False,
-                caption="bot",
+                caption="Userbot: Powered by @pureindialover",
                 # Courtesy: @A_Dark_Princ3
             )
             await event.delete()
-            
+            await borg.send_message(event.chat_id, "`☠️☠️23 Points to Griffindor!🔥🔥`")
           elif not is_message_image(reply_message):
             await event.edit("Invalid message type. Plz choose right message type u NIBBA.")
             return

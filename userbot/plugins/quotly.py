@@ -1,13 +1,14 @@
 """QuotLy: Avaible commands: .qbot
 """
 import datetime
-import asyncio
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from userbot.utils import admin_cmd, sudo_cmd
+from userbot import bot, CMD_HELP
+from userbot.utils import admin_cmd
 
-@borg.on(admin_cmd(pattern="qbot ?(.*)",outgoing=True))
+#@register(outgoing=True, pattern="^.q(?: |$)(.*)")
+@borg.on(admin_cmd(pattern=r"qbot(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
@@ -24,49 +25,16 @@ async def _(event):
        await event.edit("```Reply to actual users message.```")
        return
     await event.edit("```Making a Quote```")
-    async with event.client.conversation(chat) as conv:
+    async with bot.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=1031952739))
-              await event.client.forward_messages(chat, reply_message)
+              await bot.forward_messages(chat, reply_message)
               response = await response 
           except YouBlockedUserError: 
-              await event.reply("```Please unblock me (@QuotLyBot) u Nigga```")
+              await event.reply("```Please unblock @QuotLyBot and try again```")
               return
           if response.text.startswith("Hi!"):
              await event.edit("```Can you kindly disable your forward privacy settings for good?```")
           else: 
-             await event.delete()
-             await event.client.send_message(event.chat_id, response.message)
-
-            
-@borg.on(sudo_cmd(pattern="qbot ?(.*)",allow_sudo = True))
-async def _(event):
-    if event.fwd_from:
-        return 
-    if not event.reply_to_msg_id:
-       await event.reply("```Reply to any user message.```")
-       return
-    reply_message = await event.get_reply_message() 
-    if not reply_message.text:
-       await event.reply("```Reply to text message```")
-       return
-    chat = "@QuotLyBot"
-    sender = reply_message.sender
-    if reply_message.sender.bot:
-       await event.reply("```Reply to actual users message.```")
-       return
-    cat = await event.reply("```Making a Quote```")
-    async with event.client.conversation(chat) as conv:
-          try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=1031952739))
-              await event.client.forward_messages(chat, reply_message)
-              response = await response 
-          except YouBlockedUserError: 
-              await event.reply("```Please unblock me (@QuotLyBot) u Nigga```")
-              return
-          if response.text.startswith("Hi!"):
-             await event.reply("```Can you kindly disable your forward privacy settings for good?```")
-          else: 
-             await cat.delete()
-             await event.client.send_message(event.chat_id, response.message)
-            
+             await event.delete()   
+             await bot.forward_messages(event.chat_id, response.message)

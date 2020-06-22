@@ -1,30 +1,26 @@
+"""Auto Profile Updation Commands
+.autoname"""
 from telethon import events
 import asyncio
 import time
 from telethon.tl import functions
 from telethon.errors import FloodWaitError
-from userbot.utils import admin_cmd
-from userbot import AUTONAME, CMD_HELP
-import random, re
-import os
-from datetime import datetime
-from PIL import Image, ImageDraw, ImageFont
-from pySmartDL import SmartDL
-import shutil
-
+from uniborg.util import admin_cmd
+from userbot import ALIVE_NAME
 
 
 DEL_TIME_OUT = 60
-DEFAULTUSER = str(AUTONAME) if AUTONAME else "cat" 
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "FridayUserbot"
 
 
 @borg.on(admin_cmd(pattern="autoname"))  # pylint:disable=E0602
 async def _(event):
-    await event.edit(f"Auto Name has been started by my Master ") 
+    if event.fwd_from:
+        return
     while True:
         DM = time.strftime("%d-%m-%y")
         HM = time.strftime("%H:%M")
-        name = f"⌚️ {HM}||›  {DEFAULTUSER} ‹||📅 {DM}"
+        name = f"🕒{HM} ⚡{DEFAULTUSER}⚡ 📅{DM}"
         logger.info(name)
         try:
             await borg(functions.account.UpdateProfileRequest(  # pylint:disable=E0602
@@ -41,13 +37,4 @@ async def _(event):
             #     "Successfully Changed Profile Name"
             # )
         await asyncio.sleep(DEL_TIME_OUT)
-
-
-
-
-CMD_HELP.update({
-    "autoname":
-    ".autoname\
-    \n usage:for time along name to work this you must set `AUTONAME`in the heroku vars first \
-"
-})  
+    await event.edit(f"Auto Name has been started Master") 

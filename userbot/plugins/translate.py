@@ -8,7 +8,7 @@ from googletrans import Translator
 from userbot.utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="tl ?(.*)"))
+@borg.on(admin_cmd("tr ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -19,7 +19,7 @@ async def _(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         text = previous_message.message
-        lan = input_str or "ml"
+        lan = input_str or "gu"
     elif "|" in input_str:
         lan, text = input_str.split("|")
     else:
@@ -33,8 +33,10 @@ async def _(event):
         after_tr_text = translated.text
         # TODO: emojify the :
         # either here, or before translation
-        output_str = """**TRANSLATED** from {} to {}
-{}""".format(
+        output_str = """**Translated By FridayUserbot** 
+         Source **( {} )**
+         Translation **( {} )**
+         {}""".format(
             translated.src,
             lan,
             after_tr_text

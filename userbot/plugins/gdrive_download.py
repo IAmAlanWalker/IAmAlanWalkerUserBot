@@ -9,8 +9,7 @@ from telethon import events
 import asyncio
 import os
 import sys
-from userbot.utils import admin_cmd
-from userbot import CMD_HELP
+
 
 async def download_file_from_google_drive(id):
     URL = "https://docs.google.com/uc?export=download"
@@ -80,7 +79,6 @@ async def get_file_name(content):
     print("File Name: "+str(file_name))
     return file_name                 
 
-@borg.on(admin_cmd(pattern=f"gdl", allow_sudo=True))
 @borg.on(events.NewMessage(pattern=r"\.gdl", outgoing=True))
 async def g_download(event):
     if event.fwd_from:
@@ -92,8 +90,3 @@ async def g_download(event):
     file_name = await download_file_from_google_drive(file_id)
     await event.edit("File Downloaded.\nName: `"+str(file_name)+"`")
             
-CMD_HELP.update({
-    "gdrive_download":
-    ".gdl <gdrive File-Link>\
-    \nUsage:G-Drive File Downloader Plugin For Userbot."
-})

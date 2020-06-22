@@ -1,17 +1,16 @@
 """
 Torrent Search Plugin for Userbot. //torrentdownloads.me
 cmd: .search search_string
-Note: Number of results are currently limited to 15
+Note: Number of results are currently limited to 11
 By:-@Zero_cool7870
 
 """
 from bs4 import BeautifulSoup as bs 
 import requests
-from userbot.utils import admin_cmd
+from uniborg.util import admin_cmd
 import asyncio
 import json
-from bs4 import BeautifulSoup 
-from telethon import events
+
 
 
 def dogbin(magnets):
@@ -26,7 +25,7 @@ def dogbin(magnets):
 		counter = counter + 1
 	return urls	
 	
-@borg.on(admin_cmd(pattern="tsearch ?(.*)"))
+@borg.on(admin_cmd(pattern="search ?(.*)", allow_sudo=True))
 async def tor_search(event):
 	if event.fwd_from:
 		return 
@@ -62,7 +61,7 @@ async def tor_search(event):
 			pass
 		except AttributeError:
 			pass	
-		if counter == 15:
+		if counter == 11:
 			break		
 		counter = counter + 1
 	if not urls:
@@ -93,4 +92,6 @@ async def tor_search(event):
 	while counter != len(titles):
 		msg = msg + "⁍ [{}]".format(titles[counter])+"({})".format(shorted_links[counter])+"\n\n"
 		counter = counter + 1
+
+
 	await event.edit(msg,link_preview=False)

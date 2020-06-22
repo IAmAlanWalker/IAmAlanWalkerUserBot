@@ -1,4 +1,3 @@
-
 try:
     from userbot.plugins.sql_helper import SESSION, BASE
 except ImportError:

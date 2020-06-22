@@ -1,20 +1,14 @@
-"""Execute GNU/Linux commands inside Telegram
-Syntax: .bash Code"""
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
 from telethon import events
 import subprocess
 from telethon.errors import MessageEmptyError, MessageTooLongError, MessageNotModifiedError
 import io
 import asyncio
 import time
-from userbot.utils import admin_cmd
-from userbot import CMD_HELP
 
-@borg.on(admin_cmd(pattern="bash ?(.*)"))
+
+@command(pattern="^.bash ?(.*)")
 async def _(event):
-    if event.fwd_from or event.via_bot_id:
+    if event.fwd_from:
         return
     DELAY_BETWEEN_EDITS = 0.3
     PROCESS_RUN_TIME = 100
@@ -27,11 +21,20 @@ async def _(event):
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
-    OUTPUT = f"`{stdout.decode()}`"
-    if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    e = stderr.decode()
+    if not e:
+        e = "No Error"
+    o = stdout.decode()
+    if not o:
+        o = "**Tip**: \n`If you want to see the results of your code, I suggest printing them to stdout.`"
+    else:
+        _o = o.split("\n")
+        o = "`\n".join(_o)
+    OUTPUT = f"**QUERY:**\n__Command:__\n`{cmd}` \n__PID:__\n`{process.pid}`\n\n**stderr:** \n`{e}`\n**Output:**\n{o}"
+    if len(OUTPUT) > 4095:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
-            out_file.name = "bash.text"
-            await borg.send_file(
+            out_file.name = "exec.text"
+            await bot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
@@ -40,13 +43,4 @@ async def _(event):
                 reply_to=reply_to_id
             )
             await event.delete()
-    else:
-        await event.edit(OUTPUT)
-
-    
-CMD_HELP.update({
-    "bash":
-    ".bash code\
-    \n execute the give bash command in userbot server..\
-"
-})        
+    await event.edit(OUTPUT)

@@ -9,7 +9,7 @@ from telethon.errors import MessageEmptyError, MessageTooLongError, MessageNotMo
 import io
 import asyncio
 import time
-from userbot.utils import admin_cmd
+from uniborg.util import admin_cmd
 
 
 @borg.on(admin_cmd(pattern="exec ?(.*)"))
@@ -49,5 +49,4 @@ async def _(event):
                 reply_to=reply_to_id
             )
             await event.delete()
-    else:
-        await event.edit(OUTPUT)
+    await event.edit(OUTPUT)

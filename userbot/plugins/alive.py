@@ -1,43 +1,31 @@
-"""Check if userbot alive or not . """
+"""Check if userbot alive. If you change these, you become the gayest gay such that even the gay world will disown you."""
+#IMG CREDITS: @WhySooSerious
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
 from platform import uname
-from userbot import CMD_HELP, ALIVE_NAME 
-from userbot.utils import admin_cmd,sudo_cmd
-from telethon import version
-from platform import python_version, uname
+from userbot import ALIVE_NAME
+from userbot.utils import admin_cmd
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
-@command(outgoing=True, pattern="^.alive$")
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
+PM_IMG = "https://telegra.ph/file/2f76a5ea2a9ec22ab4284.jpg"
+pm_caption = "` Bot Made By @CeoWhiteHatCracks \n"
+pm_caption += "`Sensible Userbot IS:` **ONLINE**\n\n"
+pm_caption += "**SYSTEM STATUS**\n\n"
+pm_caption += "`TELETHON VERSION:` **6.0.9**\n`Python:` **3.7.4**\n"
+pm_caption += "`DATABASE STATUS:` **Functional**\n"
+pm_caption += "**Current Branch** : `master`\n"
+pm_caption += "**Sensible Userbot OS** : `3.14`\n"
+pm_caption += "**Current Sat** : `Ceo White Hat Cracks `\n\n"
+pm_caption += f"**My Boss** : {DEFAULTUSER} \n\n"
+pm_caption += "**Heroku Database** : `AWS - Working Properly`\n\n"
+pm_caption += "**License** : [MIT Licence]\n"
+pm_caption += "Copyright : By [Ceo White hat Cracks](GitHub.com/spandey112)\n"
+pm_caption += "[Deploy Sensible Userbot Made By @CEowhitehatcracks](https://github.com/spandey112/SensibleUserbot)"
+#@command(outgoing=True, pattern="^.alive$")
+@borg.on(admin_cmd(pattern=r"alive"))
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
-    await alive.edit("**MY BOT IS RUNNING SUCCESFULLY**\n\n"
-                     f"`☞Telethon version: {version.__version__}\n`"
-                     f"`☞Python: {python_version()}\n`"
-                     "`☞Bot Creator- @Ceowhitehatcracks \n"
-                     "`Some Bot Staff- @sin_code @blackhathacker7 MR WHITE \n"
-                     "`☞Database Status: Databases functioning normally! \n\n`"
-                     "`☞Jarvis Versioni Mark XLLLX\n`"
-                     f"`☞My peru owner`: [{DEFAULTUSER}](https://github.com/spandey112/SensibleUserbot)\n"
-                     #"[Deploy this userbot Now](https://github.com/spandey112/SensibleUserbot/)"
-                    )
-    
-    
-
-
-@borg.on(sudo_cmd(pattern="sudo", allow_sudo=True))
-async def _(event):
-    if event.fwd_from:
-        return
-    await event.reply("YOU ARE SUDO FOR THIS BOT \n\n"
-                     f"☞Telethon version: {version.__version__}\n"
-                     f"☞Python: {python_version()}\n"
-                     f"☞My peru owner: {DEFAULTUSER}\n"
-                     #"Deploy this userbot Now"
-                    )
-       
-CMD_HELP.update({"alive": "`.alive` :\
-      \nUSAGE: Type .alive to see wether your bot is working or not. "
-}) 
+    await alive.delete() 
+    await borg.send_file(alive.chat_id, PM_IMG,caption=pm_caption)

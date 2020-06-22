@@ -6,12 +6,11 @@
 """ Userbot module containing commands related to android"""
 
 import re
-import json
 from requests import get
 from bs4 import BeautifulSoup
-import asyncio
+
 from userbot import CMD_HELP
-from userbot.events import register
+from userbot.utils import register
 
 GITHUB = 'https://github.com'
 DEVICES_DATA = 'https://raw.githubusercontent.com/androidtrackers/' \
@@ -43,26 +42,30 @@ async def magisk(request):
 async def device_info(request):
     """ get android device basic info from its codename """
     textx = await request.get_reply_message()
-    codename = request.pattern_match.group(1)
-    if codename:
+    device = request.pattern_match.group(1)
+    if device:
         pass
     elif textx:
-        codename = textx.text
+        device = textx.text
     else:
         await request.edit("`Usage: .device <codename> / <model>`")
         return
-    data = json.loads(
-        get("https://raw.githubusercontent.com/androidtrackers/"
-            "certified-android-devices/master/by_device.json").text)
-    results = data.get(codename)
-    if results:
-        reply = f"**Search results for {codename}**:\n\n"
-        for item in results:
-            reply += f"**Brand**: {item['brand']}\n" \
-                     f"**Name**: {item['name']}\n" \
-                     f"**Model**: {item['model']}\n\n"
+    found = [
+        i for i in get(DEVICES_DATA).json()
+        if i["device"] == device or i["model"] == device
+    ]
+    if found:
+        reply = f'Search results for {device}:\n\n'
+        for item in found:
+            brand = item['brand']
+            name = item['name']
+            codename = item['device']
+            model = item['model']
+            reply += f'{brand} {name}\n' \
+                f'**Codename**: `{codename}`\n' \
+                f'**Model**: {model}\n\n'
     else:
-        reply = f"`Couldn't find info about {codename}!`\n"
+        reply = f"`Couldn't find info about {device}!`\n"
     await request.edit(reply)
 
 
@@ -72,7 +75,6 @@ async def codename_info(request):
     textx = await request.get_reply_message()
     brand = request.pattern_match.group(1).lower()
     device = request.pattern_match.group(2).lower()
-
     if brand and device:
         pass
     elif textx:
@@ -81,25 +83,22 @@ async def codename_info(request):
     else:
         await request.edit("`Usage: .codename <brand> <device>`")
         return
-
-    data = json.loads(
-        get("https://raw.githubusercontent.com/androidtrackers/"
-            "certified-android-devices/master/by_brand.json").text)
-    devices_lower = {k.lower(): v
-                     for k, v in data.items()}  # Lower brand names in JSON
-    devices = devices_lower.get(brand)
-    results = [
-        i for i in devices if i["name"].lower() == device.lower()
-        or i["model"].lower() == device.lower()
+    found = [
+        i for i in get(DEVICES_DATA).json()
+        if i["brand"].lower() == brand and device in i["name"].lower()
     ]
-    if results:
-        reply = f"**Search results for {brand} {device}**:\n\n"
-        if len(results) > 8:
-            results = results[:8]
-        for item in results:
-            reply += f"**Device**: {item['device']}\n" \
-                     f"**Name**: {item['name']}\n" \
-                     f"**Model**: {item['model']}\n\n"
+    if len(found) > 8:
+        found = found[:8]
+    if found:
+        reply = f'Search results for {brand.capitalize()} {device.capitalize()}:\n\n'
+        for item in found:
+            brand = item['brand']
+            name = item['name']
+            codename = item['device']
+            model = item['model']
+            reply += f'{brand} {name}\n' \
+                f'**Codename**: `{codename}`\n' \
+                f'**Model**: {model}\n\n'
     else:
         reply = f"`Couldn't find {device} codename!`\n"
     await request.edit(reply)
@@ -147,12 +146,12 @@ async def devices_specifications(request):
     reply = ''
     for url in device_page_url:
         info = BeautifulSoup(get(url).content, 'lxml')
-        reply = '\n' + info.title.text.split('-')[0].strip() + '\n'
+        reply = '\n**' + info.title.text.split('-')[0].strip() + '**\n\n'
         info = info.find('div', {'id': 'model-brief-specifications'})
         specifications = re.findall(r'<b>.*?<br/>', str(info))
         for item in specifications:
             title = re.findall(r'<b>(.*?)</b>', item)[0].strip()
-            data = re.findall(r'</b>: (.*?)<br/>', item)[0] \
+            data = re.findall(r'</b>: (.*?)<br/>', item)[0]\
                 .replace('<b>', '').replace('</b>', '').strip()
             reply += f'**{title}**: {data}\n'
     await request.edit(reply)

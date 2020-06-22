@@ -7,17 +7,12 @@ Available Commands:
 from telethon import events
 
 import asyncio
-from userbot import CMD_HELP
-from userbot.utils import admin_cmd
 
-from userbot import ALIVE_NAME
-from userbot.utils import admin_cmd
-
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
+from uniborg.util import admin_cmd
 
 
-@borg.on(admin_cmd(pattern=f"padmin", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+
+@borg.on(admin_cmd(pattern=r"padmin"))
 
 async def _(event):
 
@@ -28,14 +23,10 @@ async def _(event):
     animation_interval = 1
 
     animation_ttl = range(0, 20)
+    
+    await event.edit("Promoting")
 
-    input_str = event.pattern_match.group(1)
-
-    if input_str == "padmin":
-
-        await event.edit(input_str)
-
-        animation_chars = [
+    animation_chars = [
         
             "**Promoting User As Admin...**",
             "**Enabling All Permissions To User...**",
@@ -56,12 +47,12 @@ async def _(event):
             "**(8) Change Chat Info: ☑️**",
             "**(8) Change Chat Info: ✅**",
             "**Permission Granted Successfully**",
-            f"**pRoMooTeD SuCcEsSfUlLy bY: {DEFAULTUSER}**"
+            "**pRoMooTeD SuCcEsSfUlLy bY: @pureindialover**"
 
  ]
 
-        for i in animation_ttl:
+    for i in animation_ttl:
 
-            await asyncio.sleep(animation_interval)
+        await asyncio.sleep(animation_interval)
 
-            await event.edit(animation_chars[i % 20])
+        await event.edit(animation_chars[i % 20])
