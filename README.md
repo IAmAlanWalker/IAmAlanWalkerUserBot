@@ -1,4 +1,4 @@
-# FRIDAY
+# Sensible Userbot
 
 <p align="center">
 <img src="friday.png" alt="FRIDAY USERBOT">
@@ -15,42 +15,70 @@ Best User Bot To Manage Your Telegram Account
 
 ### For any query or want to know how it works join Group And Channel 
 
-<a href="https://t.me/FridaySupportOfficial"><img src="https://img.shields.io/badge/Join-Telegram%20Channel-red.svg?logo=Telegram"></a>
-<a href="https://t.me/fridayOT"><img src="https://img.shields.io/badge/Join-Telegram%20Group-blue.svg?logo=telegram"></a>
+<a href="https://t.me/sensible_userbot"><img src="https://img.shields.io/badge/Join-Telegram%20Channel-red.svg?logo=Telegram"></a>
 
 ## HOW TO DEPLOY 
 
-I THANK INFOTEL FOR THIER FREE VIDEO SERVICE WATCH VIDEO ON HOW TO DEPLOY 
+I THANK Mr White Who Made video For Depying WATCH VIDEO ON HOW TO DEPLOY 
 
 <a href="https://youtu.be/xfHcm_e92eQ"><img src="https://img.shields.io/badge/How%20To-Deploy-red.svg?logo=Youtube"></a>
 
 ## Installing Heroku 
 
 ### The Easy Way
-[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/StarkGang/fridayuserbot)
+[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/spandey112/SensibleUserbot/)
 
-## GET STRING SESSION FROM REPL RUN 
+🔺 How to Deploy your UserBot to Heroku 🔺
 
-[![Repl.it](https://img.shields.io/badge/REPL%20RUN-Run%20Online-blue.svg)](https://friday.starkgang.repl.run)
+1. Install And Open Termux
 
-### The Normal Way
+2. Put Given Commands In It :
 
-Simply clone the repository and run the main file:
-```sh
-git clone https://github.com/starkGang/Fridayuserbot
-cd FridayUserbot
-virtualenv -p /usr/bin/python3 venv
-. ./venv/bin/activate
-pip install -r requirements.txt
-# <Create local_config.py with variables as given below>
-python3 -m userbot
-```
+ 🔹 termux-setup-storage
+ 
+🔹 pkg install python git
 
-An example `local_config.py` file could be:
+🔹 apt install git python -y && pip install telethon
 
-**Not All of the variables are mandatory**
+🔹 python -m venv venv && . ./venv/bin/activate
 
-__The Userbot should work by setting only the first two variables__
+🔹 cd /sdcard/Telegram
+
+🔹 git clone https://github.com/spandey112/SensibleUserbot
+
+🔹 cd sensibleuserbot
+
+🔹 pip install telethon
+
+🔹 python3 telesetup.py
+
+
+3. Now Copy String Session
+
+4 Open this link https://github.com/spandey112/SensibleUserbot
+
+5. Click On Deploy app
+
+6. Make login to your heroku Account. 
+
+7. Then Fill 
+
+     🔹    App name - with any name you want 
+       
+     🔹    API_HASH  - Put Your Hash In It which you get from my.telegram.org
+
+      🔹  APP_ID - Put your Api In It which you get from my.telegram.org
+
+      🔹 HEROKU_API_KEY - Get Api Key From https://dashboard.heroku.com/account and reveal it ( This will help in update )
+
+     🔹  HEROKU_APP_NAME - Put same name as of App name
+
+     🔹  STRING_SESSION - Put String Session In It 
+
+     🔹  TG_BOT_TOKEN_BF_HER - Make new bot from botfather and put token here
+
+     🔹  TG_BOT_USER_NAME_BF_HER - Put bot Username here ( e.g.  @MyUser_bot )
+
 
 ```python3
 from heroku_config import Var
@@ -59,7 +87,17 @@ class Development(Var):
   APP_ID = 6
   API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
 ```
+7.  Now Click on Deploy App And Wait.
 
+8.   After Complete Go Back To Your App And Click On Resources.
+
+9.  On the free dynos by clicking on the ✏️ sign .
+
+10.  Now go to More Option And Click On Logs And check until complete 
+
+11.  Now go to Botfather, go to the bot settings and select 'Inline Mode' on .
+
+12. Now run .alive and .help command to check bro
 
 ### UniBorg Configuration
 
