@@ -1,7 +1,7 @@
 {
-  "name": "FRIDAY",
-  "description": "Userbot created by a @Mariodevs and join https://t.me/fridaySupportOfficial for any problems or support",
-  "logo": "https://telegra.ph/file/c3ba2e9b965f624936358.png",
+  "name": "Sensible Userbot",
+  "description": "Userbot created by a @CeoWhiteHatCracks and join https://t.me/sensible_userbot for any problems or support",
+  "logo": "https://telegra.ph/file/2f76a5ea2a9ec22ab4284.jpg",
     "keywords": [
     "telegram",
     "userbot",
@@ -9,7 +9,7 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/STARKGANG/FridayUserbot/",
+  "repository": "https://github.com/spandey112/SensibleUserbot",
   "website": "#TODO",
   "success_url": "#TODO",
   "env": {
@@ -58,7 +58,7 @@
       "value": ""
     },
     "STRING_SESSION": {
-      "description": "Get this value from https://fridayuserbot.midhunkm1294bit.repl.run",
+      "description": "Get this value from Termux Python 3",
       "value": ""
     },
     "GITHUB_ACCESS_TOKEN": {
@@ -67,7 +67,7 @@
       "required": false
     },
     "GIT_REPO_NAME": {
-      "description": "Your repo name Example: midhunkm1294/Friday, but GITHUB_ACCESS_TOKEN must be setup first.",
+      "description": "Your repo name Example: No Need For this, but GITHUB_ACCESS_TOKEN must be setup first.",
       "value": "",
       "required": false
     },
