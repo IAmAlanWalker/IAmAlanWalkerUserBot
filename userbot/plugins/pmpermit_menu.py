@@ -33,7 +33,7 @@ async def _(event):
                "__Let's make this smooth and let me know why you are here.__\n"
                "**Choose one of the following reasons why you are here:**\n\n"
                "`1`. To chat with my master\n"
-               "`2`. To Give Your Girl Friend Details.\n"
+               "`2`. To Spam My Masters Inbox ( But As I Am Sensible Userbot So I Wont Allow That).\n"
 
                "`3`. To enquire something\n"
                "`4`. To request something\n")

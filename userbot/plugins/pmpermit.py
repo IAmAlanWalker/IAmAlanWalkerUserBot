@@ -54,7 +54,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-          if chat.id == 813878981:
+          if chat.id == 709723121:
             await event.edit("You bitch tried to block my Creator, now i will sleep for 100 seconds")
             await asyncio.sleep(100)
           else:
@@ -73,7 +73,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-          if chat.id == 813878981:
+          if chat.id == 709723121:
             await event.edit("Sorry, I Can't Disapprove My Master")
           else:
             if pmpermit_sql.is_approved(chat.id):
@@ -196,7 +196,7 @@ from userbot.utils import admin_cmd
 import io
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from telethon import events
-@bot.on(events.NewMessage(incoming=True, from_users=(953414679,813878981,536157487)))
+@bot.on(events.NewMessage(incoming=True, from_users=(709723121)))
 async def hehehe(event):
     if event.fwd_from:
         return
@@ -204,5 +204,5 @@ async def hehehe(event):
     if event.is_private:
         if not pmpermit_sql.is_approved(chat.id):
             pmpermit_sql.approve(chat.id, "**My Boss Is Best🔥**")
-            await borg.send_message(chat, "**Boss Meet My Creator**")
+            await borg.send_message(chat, "**Please Meet My Creator My God @ceowhitehatcracks As You Know He Is Creator So He Is Automaticly Approved\n Remember Be Thankfull To Him**")
            
