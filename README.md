@@ -28,6 +28,10 @@ I THANK Mr White Who Made video For Depying WATCH VIDEO ON HOW TO DEPLOY
 ### The Easy Way
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/spandey112/SensibleUserbot/)
 
+ Take String session Without Termux
+
+Click here [![Run on Repl.it](https://repl.it/badge/github/spandey112/SensibleUserbot)](https://repl.it/github/spandey112/SensibleUserbot)
+ -------------------------------------------------------
 🔺 How to Deploy your UserBot to Heroku 🔺
 
 1. Install And Open Termux
