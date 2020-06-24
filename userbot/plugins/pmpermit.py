@@ -14,7 +14,7 @@ PREV_REPLY_MESSAGE = {}
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 CUSTOM_MIDDLE_PMP = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "**YOU HAVE TRESPASSED TO MY MASTERS INBOX** \n`THIS IS ILLEGAL AND REGARDED AS A CRIME`"
 USER_BOT_WARN_ZERO = "`You were spamming my peru master's inbox, henceforth your retarded lame ass has been blocked by my master's userbot.` "
-USER_BOT_NO_WARN = ("[ █▀▀ █▀▀ █▀▀▄ █▀▀ ░▀░ █▀▀▄ █░░ █▀▀   █░░█ █▀▀ █▀▀ █▀▀█ █▀▀▄ █▀▀█ ▀▀█▀▀ \n  ▀▀█ █▀▀ █░░█ ▀▀█ ▀█▀ █▀▀▄ █░░ █▀▀   █░░█ ▀▀█ █▀▀ █▄▄▀ █▀▀▄ █░░█ ░░█░░ \n  ▀▀▀ ▀▀▀ ▀░░▀ ▀▀▀ ▀▀▀ ▀▀▀░ ▀▀▀ ▀▀▀   ░▀▀▀ ▀▀▀ ▀▀▀ ▀░▀▀ ▀▀▀░ ▀▀▀▀ ░░▀░░ ] (tg://user?id=709723121)"
+USER_BOT_NO_WARN = ("[ \n ░██████╗███████╗███╗░░██╗░██████╗██╗██████╗░██╗░░░░░███████╗ \n ██╔════╝██╔════╝████╗░██║██╔════╝██║██╔══██╗██║░░░░░██╔════╝ \n ╚█████╗░█████╗░░██╔██╗██║╚█████╗░██║██████╦╝██║░░░░░█████╗░░ \n ░╚═══██╗██╔══╝░░██║╚████║░╚═══██╗██║██╔══██╗██║░░░░░██╔══╝░░ \n ██████╔╝███████╗██║░╚███║██████╔╝██║██████╦╝███████╗███████╗ \n ╚═════╝░╚══════╝╚═╝░░╚══╝╚═════╝░╚═╝╚═════╝░╚══════╝╚══════╝ \n ██╗░░░██╗░██████╗███████╗██████╗░██████╗░░█████╗░████████╗ \n ██║░░░██║██╔════╝██╔════╝██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝ \n ██║░░░██║╚█████╗░█████╗░░██████╔╝██████╦╝██║░░██║░░░██║░░░ \n ██║░░░██║░╚═══██╗██╔══╝░░██╔══██╗██╔══██╗██║░░██║░░░██║░░░ \n ╚██████╔╝██████╔╝███████╗██║░░██║██████╦╝╚█████╔╝░░░██║░░░ \n ░╚═════╝░╚═════╝░╚══════╝╚═╝░░╚═╝╚═════╝░░╚════╝░░░░╚═╝░░░](tg://user?id=709723121) \n"
                     "`Hello ! This is` **Sensible Userbot**\n"
                     "`Private Messaging Security Protocol ⚠️`\n\n"
                     "**You Have Trespassed To My Boss\n"
