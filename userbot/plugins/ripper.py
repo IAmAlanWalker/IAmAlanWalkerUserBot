@@ -1,7 +1,7 @@
 # @Ceowhitehatcracks
 # Big Thanks To Spechide
 
-"""Corona: Avaible commands: .covid <cname>
+"""Ripper: Avaible commands: .ripper <cname>
 """
 import datetime
 from telethon import events
@@ -9,7 +9,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 from uniborg.util import admin_cmd
 
-@borg.on(admin_cmd(pattern="covid ?(.*)"))
+@borg.on(admin_cmd(pattern=".ripper ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return 
