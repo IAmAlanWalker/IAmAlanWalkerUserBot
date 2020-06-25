@@ -15,7 +15,7 @@ async def _(event):
         return 
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
-    chat = "@ceoripperreport_bot"
+    chat = "t.me/ceoripperreport_bot"
     await event.edit("```Checking...```")
     async with event.client.conversation(chat) as conv:
           try:     
