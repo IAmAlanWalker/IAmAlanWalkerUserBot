@@ -24,6 +24,5 @@ pm_caption += "[Deploy Sensible Userbot Made By @CEowhitehatcracks](https://gith
 #@command(outgoing=True, pattern="^.alive$")
 @borg.on(admin_cmd(pattern=r"alive"))
 async def amireallyalive(alive):
-    """ For .alive command, check if the bot is running.  """
-    await alive.delete() 
-    await borg.send_file(alive.chat_id, PM_IMG,caption=pm_caption)
+    """ For .alive command, check if the bot is running.  """ 
+    await borg.send_file(alive.chat_id,caption=pm_caption)
