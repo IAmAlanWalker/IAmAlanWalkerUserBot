@@ -1,5 +1,4 @@
-"""By STARKTM1
-cmd : .plane"""
+#By STARKTM1
 from telethon import events
 import asyncio
 import os
@@ -28,4 +27,3 @@ async def _(event):
     await event.edit("-------------✈")
     await asyncio.sleep(3)
     await event.delete()
-
