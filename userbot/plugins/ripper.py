@@ -4,6 +4,7 @@
 """Ripper: Avaible commands: .ripper <cname>
 """
 import datetime
+from telethon import chat
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
@@ -25,7 +26,7 @@ async def _(event):
           except YouBlockedUserError: 
               await event.reply("```Abey (@ceoripperreport_bot) Ko Unblock Kar```")
               return
-          if response.text.startswith("Ripper"):
+          if response.text.startswith(".Ripper"):
              await event.edit("😐**Ripper Not Found**😐\n\n[👇👇👇👇👇👇👇👇👇\n 👉👉How to use 👈👈\n👆👆👆👆👆👆👆👆👆](https://t.me/ceowhitehatcracks)")
           else: 
              await event.delete()
