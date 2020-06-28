@@ -1,7 +1,7 @@
-"""@telegraph Utilities updated for Lazy people by @WhySooSerious 
+"""@telegraph Utilities
 Available Commands:
-.tgm reply to a media
-.tgt as reply to a large text"""
+.telegraph media as reply to a media
+.telegraph text as reply to a large text"""
 from telethon import events
 import os
 from PIL import Image
@@ -14,17 +14,17 @@ r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
 
 
-@borg.on(admin_cmd("t(m|t) ?(.*)"))
+@borg.on(admin_cmd(pattern="telegraph (media|text) ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
-    if Config.PLUGIN_CHANNEL is None:
-        await event.edit("Please set the required environment variable `PLUGIN_CHANNEL` for this plugin to work")
+    if Config.PRIVATE_GROUP_BOT_API_ID is None:
+        await event.edit("Please set the required environment variable `PRIVATE_GROUP_BOT_API_ID` for this plugin to work")
         return
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     await borg.send_message(
-        Config.PLUGIN_CHANNEL,
+        Config.PRIVATE_GROUP_BOT_API_ID,
         "Created New Telegraph account {} for the current session. \n**Do not give this url to anyone, even if they say they are from Telegram!**".format(auth_url)
     )
     optional_title = event.pattern_match.group(2)
@@ -32,7 +32,7 @@ async def _(event):
         start = datetime.now()
         r_message = await event.get_reply_message()
         input_str = event.pattern_match.group(1)
-        if input_str == "m":
+        if input_str == "media":
             downloaded_file_name = await borg.download_media(
                 r_message,
                 Config.TMP_DOWNLOAD_DIRECTORY
@@ -53,7 +53,7 @@ async def _(event):
                 ms_two = (end - start).seconds
                 os.remove(downloaded_file_name)
                 await event.edit("Uploaded to https://telegra.ph{} in {} seconds.".format(media_urls[0], (ms + ms_two)), link_preview=True)
-        elif input_str == "t":
+        elif input_str == "text":
             user_object = await borg.get_entity(r_message.from_id)
             title_of_page = user_object.first_name # + " " + user_object.last_name
             # apparently, all Users do not have last_name field

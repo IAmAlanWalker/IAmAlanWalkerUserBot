@@ -9,20 +9,22 @@ from userbot.utils import admin_cmd
 
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
-pm_caption = "` Bot Made By @CeoWhiteHatCracks \n"
-pm_caption += "`Team Members Of This bot @spkal01 @sin_code @blackhathacker7 @MrJetex\n"
-pm_caption += "`Sensible Userbot IS:` **ONLINE**\n\n"
-pm_caption += "**SYSTEM STATUS**\n\n"
-pm_caption += "`TELETHON VERSION:` **6.0.9**\n`Python:` **3.7.4**\n"
-pm_caption += "`DATABASE STATUS:` **Functional**\n"
-pm_caption += "**Current Branch** : `master`\n"
-pm_caption += "**Sensible Userbot OS** : `3.14`\n"
-pm_caption += "**Current Sat** : `Ceo White Hat Cracks `\n\n"
-pm_caption += f"**My Boss** : {DEFAULTUSER} \n\n"
-pm_caption += "**Heroku Database** : `AWS - Working Properly`\n\n"
-pm_caption += "[Deploy Sensible Userbot Made By @CEowhitehatcracks](https://github.com/spandey112/SensibleUserbot)"
+ALIVE_IMG = "https://telegra.ph/file/2f76a5ea2a9ec22ab4284.jpg"
+ALIVE_caption = "`Sensible Userbot IS:` **ONLINE**\n\n"
+ALIVE_caption += "**SYSTEM STATUS**\n\n"
+ALIVE_caption += "`TELETHON VERSION:` **6.0.9**\n`Python:` **3.7.4**\n\n"
+ALIVE_caption += "`DATABASE STATUS:` **Functional**\n\n"
+ALIVE_caption += "**Current Branch** : `master`\n\n"
+ALIVE_caption += "**Sensible  OS** : `3.14`\n\n"
+ALIVE_caption += "**Current Sat** : `Sensible Userbot Sat-2.95`\n\n"
+ALIVE_caption += f"**My Boss** : {DEFAULTUSER} \n\n"
+ALIVE_caption += "**Heroku Database** : `AWS - Working Properly`\n\n"
+ALIVE_caption += "**Bot Made By @ceowhitehatcracks \n\n"
+ALIVE_caption += "Copyright By [CEOWHITEHATCRACKS](GitHub.com/spandey112)\n\n"
+ALIVE_caption += "[Deploy SensibleUserbot](GitHub.com/spandey112/sensibleuserbot)"
 #@command(outgoing=True, pattern="^.alive$")
 @borg.on(admin_cmd(pattern=r"alive"))
 async def amireallyalive(alive):
-    """ For .alive command, check if the bot is running.  """ 
-    await borg.send_file(alive.chat_id,caption=pm_caption)
+    """ For .alive command, check if the bot is running.  """
+    await alive.delete() 
+    await borg.send_file(alive.chat_id, ALIVE_IMG,caption=ALIVE_caption)
