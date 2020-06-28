@@ -17,8 +17,8 @@ last_afk_message = {}
 @borg.on(admin_cmd(pattern=r"night "))
 
 
-            if:
-            "**Important Notice**\n\n[This User Is Sleeping On The Bed ...](https://telegra.ph/file/3e6d2fb965f293e3680ff.jpg) "
+            
+            print"**Important Notice**\n\n[This User Is Sleeping On The Bed ...](https://telegra.ph/file/3e6d2fb965f293e3680ff.jpg) "
         msg = await event.reply(message_to_reply)
         await asyncio.sleep(5)
         if event.chat_id in last_afk_message:  # pylint:disable=E0602
