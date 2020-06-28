@@ -18,20 +18,16 @@ last_afk_message = {}
 
 
             
-            print"**Important Notice**\n\n[This User Is Sleeping On The Bed ...](https://telegra.ph/file/3e6d2fb965f293e3680ff.jpg) "
+            msg = None
+        message_to_reply = f"Important Notice**\n\n[This User Is Sleeping On The Bed ...](https://telegra.ph/file/3e6d2fb965f293e3680ff.jpg)** " + \
+            f"\n\n__ I'll back in a few Light years__\n**REASON**: {reason}" \
+            if reason \
+            else f"**Important Notice**\n\n[This User Is Sleeping On The Bed ...](https://telegra.ph/file/3e6d2fb965f293e3680ff.jpg) "
         msg = await event.reply(message_to_reply)
         await asyncio.sleep(5)
         if event.chat_id in last_afk_message:  # pylint:disable=E0602
             await last_afk_message[event.chat_id].delete()  # pylint:disable=E0602
         last_afk_message[event.chat_id] = msg  # pylint:disable=E0602
-        
-     except Exception as e:  # pylint:disable=C0103,W0703
-            await borg.send_message(  # pylint:disable=E0602
-                event.chat_id,
-                "Please set `PLUGIN_CHANNEL` " + \
-                "for the proper functioning of afk functionality " + \
-                "in @Sensible_userbot \n\n `{}`".format(str(e)),
-                reply_to=event.message.id,
-                silent=True
             )
      
+
