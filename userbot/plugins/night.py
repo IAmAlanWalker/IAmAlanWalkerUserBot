@@ -5,6 +5,7 @@ import datetime
 from telethon import events
 from telethon.tl import functions, types
 from userbot.utils import admin_cmd
+from userbot import ALIVE_NAME
 
 global USER_night  # pylint:disable=E0602
 global night_time  # pylint:disable=E0602
@@ -13,7 +14,7 @@ USER_night = {}
 night_time = None
 last_night_message = {}
 
-
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 @borg.on(events.NewMessage(outgoing=True))  # pylint:disable=E0602
 async def set_not_night(event):
     global USER_night  # pylint:disable=E0602
@@ -24,7 +25,7 @@ async def set_not_night(event):
         try:
             await borg.send_message(  # pylint:disable=E0602
                 Config.PLUGIN_CHANNEL,  # pylint:disable=E0602
-                "Mine Owner has Gone Sleep (Pure Din Sota hi Rehta He {defaultuser} )"
+                "Mine Owner has Gone Sleep (Pure Din Sota hi Rehta He {DEFAULTUSER} )"
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await borg.send_message(  # pylint:disable=E0602
@@ -124,7 +125,7 @@ async def on_night(event):
         message_to_reply = f"My Master Has Been Gone For {night_since}\nWhere He Is: **On Bed Sleeping** " + \
             f"\n\n__ I'll back in a few Light years__\n**" \
             if reason \
-            else f"**Important Notice**\n\n[This User Is Sleeping DND And Also Good night To You...](https://telegra.ph/file/3e6d2fb965f293e3680ff.jpg) "
+            else f"**Important Notice**\n\n[{DEFAULTUSER} Is Sleeping DND And Also Good night To You...](https://telegra.ph/file/3e6d2fb965f293e3680ff.jpg) "
         msg = await event.reply(message_to_reply)
         await asyncio.sleep(5)
         if event.chat_id in last_night_message:  # pylint:disable=E0602
