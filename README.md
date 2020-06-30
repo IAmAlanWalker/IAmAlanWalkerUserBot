@@ -34,8 +34,8 @@ Take Sting session from Replit
 
 🔺 How to Deploy your UserBot to Heroku 🔺
 
-So I have Updated This Things For Api Id Just GO To This Bot Click There 👉[App Id Extractor](t.me/ceoappid_bot)
-1. Take APP ID AND HASH FROM Click There 👉[App Id Extractor](t.me/ceoappid_bot)
+So I have Updated This Things For Api Id Just GO To This Bot Click There t.me/ceoappid_bot
+1. Take APP ID AND HASH FROM Click There t.me/ceoappid_bot
 
 2. For String Session [👉Click here 👈](https://sensibleuserbotstringsession.spandey112.repl.run/)
 2.1 Wait For 2 Mins Until It Asks API ID 
