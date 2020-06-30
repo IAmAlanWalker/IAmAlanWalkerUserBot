@@ -187,7 +187,7 @@ async def blockpm(block):
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-          if chat.id == 709723121,1111214141:
+          if chat.id == (709723121,1111214141):
             await event.edit(" Why You tried to block my Creator, now i will sleep for 100 seconds")
             await asyncio.sleep(100)
           else:
@@ -208,7 +208,7 @@ async def blockpm(block):
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-          if chat.id == 709723121,1111214141:
+          if chat.id == (709723121,1111214141):
             await event.edit("Sorry, I Can't Disapprove My Master")
           else:
             if pmpermit_sql.is_approved(chat.id):
