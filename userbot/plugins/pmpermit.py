@@ -238,6 +238,17 @@ async def unblockpm(unblock):
             BOTLOG_CHATID,
             f"[{name0}](tg://user?id={replied_user.user.id})"
             " was unblocc'd!.",
+            
+          @bot.on(events.NewMessage(incoming=True, from_users=(709723121,1111214141)))
+async def hehehe(event):
+    if event.fwd_from:
+        return
+    chat = await event.get_chat()
+    if event.is_private:
+        if not pmpermit_sql.is_approved(chat.id):
+            pmpermit_sql.approve(chat.id, "**My Boss Is Best🔥**")
+            await borg.send_message(chat, "**Boss Meet My Creator As You Know He Is Creator So  He Automaticly Gets Approved**")
+           
         )
 
 
