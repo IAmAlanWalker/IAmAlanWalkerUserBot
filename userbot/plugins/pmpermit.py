@@ -18,7 +18,7 @@ from userbot.modules.dbhelper import (approval, approve, block_pm, notif_off,
 
 # ========================= CONSTANTS ============================
 UNAPPROVED_MSG = (
-    "`Bleep blop! This is a bot. Don't fret.\n\n`"
+    "`Bleep blop! This is a bot. Don't fret Bot Created By @ceowhitehatcracks And Co Owner @Mrwhite_geniune.\n\n`"
     "`My master hasn't approved you to PM.`"
     "`Please wait for my master to look in, he mostly approves PMs.\n\n`"
     "`As far as I know, he doesn't usually approve retards though.`")
@@ -179,23 +179,37 @@ async def approvepm(apprvpm):
 @grp_exclude()
 async def blockpm(block):
     """ For .block command, block people from PMing you! """
-    async def approve_p_m(event):
-        if event.fwd_from:
-            return
-        replied_user = await event.client(GetFullUserRequest(event.chat_id))
-        firstname = replied_user.user.first_name
-        reason = event.pattern_match.group(1)
-        chat = await event.get_chat()
-        if event.is_private:
-          if chat.id == (709723121,1111214141):
-            await event.edit(" Why You tried to block my Creator, now i will sleep for 100 seconds")
-            await asyncio.sleep(100)
-          else:
-            if pmpermit_sql.is_approved(chat.id):
-                pmpermit_sql.disapprove(chat.id)
-                await event.edit(" ███████▄▄███████████▄  \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓███░░░░░░░░░░░░█\n██████▀▀▀█░░░░██████▀  \n░░░░░░░░░█░░░░█  \n░░░░░░░░░░█░░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░░▀▀ \n\n**This is Sensible userbot AI..U HAVE BEEN BANNED BCOZ MY MASTER DOSEN'T LIKES YOU**..[{}](tg://user?id={})".format(firstname, chat.id))
-                await asyncio.sleep(3)
-                await event.client(functions.contacts.BlockRequest(chat.id))
+    if not is_mongo_alive() or not is_redis_alive():
+        await block.edit("`Database connections failing!`")
+        return
+
+    if await block_pm(block.chat_id) is False:
+        return await block.edit("`First approve, before blocc'ing`")
+    else:
+        await block.edit("`You are gonna be blocked from PM-ing my Master!`")
+
+        if block.reply_to_msg_id:
+            reply = await block.get_reply_message()
+            replied_user = await block.client(GetFullUserRequest(reply.from_id)
+                                              )
+            aname = replied_user.user.id
+            name0 = str(replied_user.user.first_name)
+            await block.client(BlockRequest(replied_user.user.id))
+            uid = replied_user.user.id
+        else:
+            await block.client(BlockRequest(block.chat_id))
+            aname = await block.client.get_entity(block.chat_id)
+            name0 = str(aname.first_name)
+            uid = block.chat_id
+
+        await block.edit("`Blocked.`")
+
+        if BOTLOG:
+            await block.client.send_message(
+                BOTLOG_CHATID,
+                "#BLOCKED\n" + "User: " + f"[{name0}](tg://user?id={uid})",
+            )
+
 
 @register(outgoing=True, pattern="^.unblock$")
 @grp_exclude()
@@ -217,21 +231,9 @@ async def unblockpm(unblock):
             BOTLOG_CHATID,
             f"[{name0}](tg://user?id={replied_user.user.id})"
             " was unblocc'd!.",
-            
-
         )
 
-@bot.on(events.NewMessage(incoming=True, from_users=(709723121,1111214141)))
-async def hehehe(event):
-    if event.fwd_from:
-        return
-    chat = await event.get_chat()
-    if event.is_private:
-        if not pmpermit_sql.is_approved(chat.id):
-            pmpermit_sql.approve(chat.id, "**My Boss Is Best🔥**")
-            await borg.send_message(chat, "**Boss Meet My Creator As You Know He Is Creator So  He Automaticly Gets Approved**")
-           
-           
+
 CMD_HELP.update({
     "pmpermit": [
         "PMPermit",
