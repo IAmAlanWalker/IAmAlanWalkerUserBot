@@ -199,7 +199,7 @@ async def blockpm(block):
                 
                 
                 
-                 @command(pattern="^.disapprove ?(.*)")
+                 @command(pattern=".disapprove ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from:
             return
