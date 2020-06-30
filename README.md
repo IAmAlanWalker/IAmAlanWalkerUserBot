@@ -29,33 +29,20 @@ I THANK Mr White Who Made video For Depying WATCH VIDEO ON HOW TO DEPLOY
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/spandey112/SensibleUserbot/)
 
 Take Sting session from Replit
-[![Run on Repl.it](https://repl.it/badge/github/spandey112/SensibleUserbot)](https://repl.it/github/spandey112/SensibleUserbot)
+[![Run on Repl.it](https://repl.it/badge/github/spandey112/SensibleUserbot)](https://sensibleuserbotstringsession.spandey112.repl.run/)
 -------------------------------------------------
 
 🔺 How to Deploy your UserBot to Heroku 🔺
 
-1. Install And Open Termux
+So I have Updated This Things For Api Id Just GO To This Bot Click There 👉[App Id Extractor](t.me/ceoappid_bot)
+1. Take APP ID AND HASH FROM Click There 👉[App Id Extractor](t.me/ceoappid_bot)
 
-2. Put Given Commands In It :
-
- 🔹 termux-setup-storage
- 
-🔹 pkg install python git
-
-🔹 apt install git python -y && pip install telethon
-
-🔹 python -m venv venv && . ./venv/bin/activate
-
-🔹 cd /sdcard/Telegram
-
-🔹 git clone https://github.com/spandey112/SensibleUserbot
-
-🔹 cd sensibleuserbot
-
-🔹 pip install telethon
-
-🔹 python3 telesetup.py
-
+2. For String Session [👉Click here 👈](https://sensibleuserbotstringsession.spandey112.repl.run/)
+2.1 Wait For 2 Mins Until It Asks API ID 
+2.2 When It Ask Api Id And Hash Go To That Bot Which I Gived In Step 1 
+2.3 Then After That Enter Your Phone Number 
+2.4 It will Send A OTP Enter The Otp There
+2.5 Boom 💣 Your String Session Has Been Generated 
 
 3. Now Copy String Session
 
