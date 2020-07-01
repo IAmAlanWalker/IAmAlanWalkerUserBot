@@ -10,7 +10,7 @@ from userbot.utils import admin_cmd
 
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
-  WARN_PIC = "https://telegra.ph/file/2f76a5ea2a9ec22ab4284.jpg"
+  WARN_PIC = "https://telegra.ph/file/6225d447ed8ba1d23079f.jpg"
 else:
   WARN_PIC = PMPERMIT_PIC
 
@@ -21,7 +21,7 @@ PREV_REPLY_MESSAGE = {}
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 CUSTOM_MIDDLE_PMP = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "**YOU HAVE TRESPASSED TO MY MASTERS INBOX** \n`THIS IS ILLEGAL AND REGARDED AS A CRIME`"
 USER_BOT_WARN_ZERO = "`Unfortunataly You Have Been Banned Because You Were Spamming My Masters Inbox.` "
-USER_BOT_NO_WARN = ("`Hello ! This is` **Sensible Userbot**\n"
+USER_BOT_NO_WARN = ("`Hello [{}](tg://user?id={})".format(firstname, chat.id)! This is` **Sensible Userbot**\n"
                     "`Private Messaging Security Protocol ⚠️`\n\n"
                     "**Welcome Sir This Is My Master\n"
                     f"{DEFAULTUSER}'s Inbox**\n\n"
