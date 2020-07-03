@@ -55,8 +55,8 @@ async def _(event):
     #packname = f"Sensible Userbot PACK"
     #packshortname = f"Sensible Userbot_{userid}_ns"  # format: Uni_Borg_userid
     if userid == 813878981:
-        packname = f"STARKGANGPACK"
-        packshortname = "Starkgang"
+        packname = f"Sensible UserbotPACK"
+        packshortname = "Sensible Userbot"
     else:
         packname = f"{user.first_name}'s Sensible Userbot Vol.{pack}"
         packshortname = f"Sensible Userbot_{userid}_Pack"
@@ -70,8 +70,8 @@ async def _(event):
         file_ext_ns_ion = "AnimatedSticker.tgs"
         uploaded_sticker = await borg.upload_file(file, file_name=file_ext_ns_ion)
         if userid == 813878981:
-            packname = f"StarkGang Ka Pack"
-            packshortname = "StarkGangisgreat"
+            packname = f"Sensible Userbot Ka Pack"
+            packshortname = "Sensible Userbotisgreat"
         else:
             packname = f"{user.first_name}'s Sensible Userbot Animated Vol.{pack}"
             packshortname = f"Sensible Userbot_{userid}" # format: Uni_Borg_userid
