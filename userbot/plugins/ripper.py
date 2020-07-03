@@ -13,7 +13,7 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     chat = "@RipperFreeTelegramBot"
-    await event.edit("```Checking...```")
+    await event.edit("```Thankyou User Reported @sensible_userbot Ripper Team Will Check This And If ...```")
     async with event.client.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=922885909))
@@ -22,8 +22,8 @@ async def _(event):
           except YouBlockedUserError: 
               await event.reply("```Abey (@RipperFreeTelegramBot) Ko Unblock Kar```")
               return
-          if response.text.startswith("Country"):
-             await event.edit("😐**Country Not Found**😐\n\n[👇👇👇👇👇👇👇👇👇\n 👉👉How to use 👈👈\n👆👆👆👆👆👆👆👆👆](https://t.me/ceowhitehatcracks)")
+          if response.text.startswith("Ripper"):
+             await event.edit("😐**Abe Lode Code Churane Aya Hei kya 😎Bhak bhosdike")
           else: 
              await event.delete()
              await event.client.send_message(event.chat_id, response.message)
