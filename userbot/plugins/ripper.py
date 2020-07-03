@@ -13,7 +13,7 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     chat = "@RipperFreeTelegramBot"
-    await event.edit("```Thankyou User Reported @sensible_userbot Ripper Team Will Check This And If ...```")
+    await event.edit("```Thankyou User Reported @sensible_userbot Ripper Team Will Check This And If user Found So That User Will Be Globally Banned...```")
     async with event.client.conversation(chat) as conv:
           try:     
               response = conv.wait_event(events.NewMessage(incoming=True,from_users=922885909))
