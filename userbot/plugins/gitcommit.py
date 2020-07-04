@@ -71,7 +71,7 @@ async def git_commit(file_name,mone):
         file_name = file_name.replace("./userbot/temp/","")
         print(file_name)
         try:
-            repo.create_file(file_name, "New Plugin Uploaded To Friday", commit_data, branch="master")
+            repo.create_file(file_name, "New Plugin Uploaded To Sensible Userbot", commit_data, branch="master")
             print("Committed File")
             ccess = Var.GIT_REPO_NAME
             ccess = ccess.strip()

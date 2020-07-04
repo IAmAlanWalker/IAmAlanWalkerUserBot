@@ -25,7 +25,7 @@ async def _(event):
         message_id = event.reply_to_msg_id
         reply_message = await event.get_reply_message()
         # check if media message
-        await event.edit("Connecting to official Friday server and analysing that img ...")
+        await event.edit("Connecting to official Sensible Userbot server and analysing that img ...")
         try:
             downloaded_file_name = await borg.download_media(
                 reply_message,
@@ -47,7 +47,7 @@ async def _(event):
     contentType = output_file_name.headers.get("content-type")
     if "image" in contentType:
         with io.BytesIO(output_file_name.content) as remove_bg_image:
-            remove_bg_image.name = "@FridayOT.png"
+            remove_bg_image.name = "@sensible_userbot.png"
             await borg.send_file(
                 event.chat_id,
                 remove_bg_image,

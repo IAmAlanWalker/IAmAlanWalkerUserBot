@@ -12,8 +12,10 @@ from uniborg.util import admin_cmd
 
 from userbot import AUTONAME
 
+from userbot import ALIVE_NAME
 
-DEFAULTUSER = str(AUTONAME) if AUTONAME else "FRIDAY"
+
+DEFAULTUSER = str(AUTONAME) if AUTONAME else "@Sensible_userbot"
 
 @borg.on(admin_cmd(pattern=r"deploy"))
 
@@ -44,9 +46,9 @@ async def _(event):
             "**Process exited with** `status 143`",
             "**Starting process with command** `python3 -m stdborg`",
             "**State changed from starting to up**",
-            "__INFO:Sensible Userbot:Logged in as 557667062__",
-            "__INFO:Sensible Userbot:Successfully loaded all plugins__",
-            "**Build Succeeded**"
+            "__INFO:Sensible Userbot:Logged in as {DEFAULTUSER}",
+            "__INFO:Sensible Userbot:Successfully loaded all plugins__ Userbot By @ceowhitehatcracks Join @sensible_userbot For Learning How To Deploy",
+            "**Build Succeeded Userbot By @ceowhitehatcracks Join @sensible_userbot For Learning How To Deploy**"
 
  ]
 

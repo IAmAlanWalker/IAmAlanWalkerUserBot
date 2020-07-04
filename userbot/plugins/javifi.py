@@ -39,7 +39,7 @@ async def _(event):
               response = await conv.get_response()
               await conv.send_message("/ss")
               audio = await conv.get_response()
-              await borg.send_file(event.chat_id, audio, caption="**CREDITS : Dr.jr Genesis**\n`Check out` [FRIDAY](https://github.com/midhunkm1294-bit/friday)")
+              await borg.send_file(event.chat_id, audio, caption="**CREDITS : Dr.jr Genesis**\n`Check out` [Sensible Userbot Support](t.me/sensible_userbot)")
               await event.delete()
           except YouBlockedUserError:
               await event.edit("**Error:** `unblock` @Mariodevs `and retry!`")
@@ -50,7 +50,7 @@ async def _(event):
               response = await conv.get_response()
               await conv.send_message("/help")
               audio = await conv.get_response()
-              await borg.send_file(event.chat_id, audio, caption="**Dr.Bot Is Here To Help**\n`Check out` [FRIDAY](https://github.com/midhunkm1294-bit/friday)")
+              await borg.send_file(event.chat_id, audio, caption="**Dr.Bot Is Here To Help**\n`Check out` [Sensible Userbot Support](t.me/sensible_userbot)")
               await event.delete()
           except YouBlockedUserError:
               await event.edit("**Error:** `unblock` @Mariodevs `and retry!`")
@@ -61,7 +61,7 @@ async def _(event):
               response = await conv.get_response()
               await conv.send_message("/nudepic")
               audio = await conv.get_response()
-              await borg.send_file(event.chat_id, audio, caption="**For" + naam +" **\n`Check out` [FRIDAY](https://github.com/midhunkm1294-bit/Friday)")
+              await borg.send_file(event.chat_id, audio, caption="**For" + naam +" **\n`Check out` [Sensible Userbot Support](t.me/sensible_userbot)")
               await event.delete()
           except YouBlockedUserError:
               await event.edit("**Error:** `unblock` @indianaibot `and retry!`")
@@ -72,7 +72,7 @@ async def _(event):
               response = await conv.get_response()
               await conv.send_message("/rs")
               audio = await conv.get_response()
-              await borg.send_file(event.chat_id, audio, caption="**CREDITS : Dr.Pure Indian Lover**\n`Check out` [FRIDAY](https://github.com/midhunkm1294-bit/friday)")
+              await borg.send_file(event.chat_id, audio, caption="**CREDITS : @CEOWHITEHATCRACKS**\n`Check out` [Sensible Userbot Support](t.me/sensible_userbot)")
               await event.delete()
           except YouBlockedUserError:
               await event.edit("**Error:** `unblock` @Mariodevs `and retry!`")

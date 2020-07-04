@@ -47,7 +47,7 @@ async def animepp():
 
         urllib.request.urlretrieve("https://github.com/rebel6969/mym/raw/master/Rebel-robot-Regular.ttf","f.ttf")
 
-    urllib.request.urlretrieve(fy,"friday.jpg")
+    urllib.request.urlretrieve(fy,"Sensible Userbot.jpg")
 
 @borg.on(admin_cmd(pattern="spacedp ?(.*)"))
 
