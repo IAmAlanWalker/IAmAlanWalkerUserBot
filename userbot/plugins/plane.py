@@ -1,4 +1,4 @@
-#By STARKTM1
+#By Sensible Userbot
 from telethon import events
 import asyncio
 import os

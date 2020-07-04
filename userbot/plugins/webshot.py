@@ -25,7 +25,7 @@ async def _(event):
 
     if Config.SCREEN_SHOT_LAYER_ACCESS_KEY is None:
 
-        await event.edit("Need to get an API key from https://screenshotlayer.com/product \nModule stopping!")
+        await event.edit("Need to get an API key from https://screenshotlayer.com/product \nModule stopping For More Info Contact @Sensible_Userbot!")
 
         return
 

@@ -1,5 +1,5 @@
 '''
-for bot credits to @pureindialover
+for bot credits to @CeoWhiteHatCracks
 '''
 
 from telethon.tl import functions, types

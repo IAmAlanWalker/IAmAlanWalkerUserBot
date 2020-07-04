@@ -63,7 +63,7 @@ async def _(event):
     await event.edit("`Is It Legal ? Oh Yes it is !! \nLook That Way ! Let me Kang This ¯\_(ツ)_/¯`")
 
     is_a_s = is_it_animated_sticker(reply_message)
-    file_ext_ns_ion = "@Sensible Userbot.png"
+    file_ext_ns_ion = "@Sensible_Userbot.png"
     file = await borg.download_file(reply_message.media)
     uploaded_sticker = None
     if is_a_s:
@@ -194,7 +194,7 @@ async def _(event):
                 await silently_send_message(bot_conv, response)
                 await silently_send_message(bot_conv, sticker_emoji)
                 await silently_send_message(bot_conv, "/done")
-    await event.edit(f"**Sticker** `Kanged Legally And It Can Be Found` [⚡Here⚡](t.me/addstickers/{packshortname})")
+    await event.edit(f"**Sticker** `Kanged Legally And It Can Be Found` [🔰Here🔰](t.me/addstickers/{packshortname})")
 
 
 @borg.on(admin_cmd(pattern="packinfo"))

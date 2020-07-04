@@ -51,7 +51,7 @@ async def _(event):
 <b>🗣️Second Name</b>: <code>{}</code>
 <b>👨🏿‍💻BIO</b>: {}
 <b>🎃DC ID</b>: {}
-<b>⚡NO OF PSS</b> : {}
+<b>🔰NO OF PSS</b> : {}
 <b>🤔IS RESTRICTED</b>: {}
 <b>✅VERIFIED</b>: {}
 <b>🙄IS A BOT</b>: {}

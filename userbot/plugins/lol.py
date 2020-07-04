@@ -2,7 +2,7 @@
 """
 Pulls Up A Random string created by Indian Bhai.
 cmd: .lol
-    full credits : @pureindialover
+    full credits : @CeoWhiteHatCracks
 """
 from telethon import events
 import asyncio

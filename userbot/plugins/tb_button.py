@@ -1,4 +1,4 @@
-"""Create Button Posts Fix By @pureindialover
+"""Create Button Posts Fix By @CeoWhiteHatCracks
 """
 
 import re

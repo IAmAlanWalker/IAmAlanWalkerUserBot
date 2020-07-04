@@ -150,7 +150,7 @@ async def _(event):
         
     if x==30:
 
-        await event.edit("`\"A girl is Arya Stark of Winterfell. And I'm going home.\"`")
+        await event.edit("`\"A girl is Arya Sensible Userbot of Winterfell. And I'm going home.\"`")
         
     if x==31:
 
@@ -162,7 +162,7 @@ async def _(event):
         
     if x==33:
 
-        await event.edit("`\"Lannister, Targaryen, Baratheon, Stark, Tyrell... they're all just spokes on a wheel. This one's on top, then that one's on top, and on and on it spins, crushing those on the ground.\"`")
+        await event.edit("`\"Lannister, Targaryen, Baratheon, Sensible Userbot, Tyrell... they're all just spokes on a wheel. This one's on top, then that one's on top, and on and on it spins, crushing those on the ground.\"`")
         
     if x==34:
 

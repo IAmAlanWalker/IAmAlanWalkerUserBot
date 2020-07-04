@@ -42,7 +42,7 @@ async def _(event):
               await borg.send_file(event.chat_id, audio, caption="**CREDITS : Dr.jr Genesis**\n`Check out` [Sensible Userbot Support](t.me/sensible_userbot)")
               await event.delete()
           except YouBlockedUserError:
-              await event.edit("**Error:** `unblock` @Mariodevs `and retry!`")
+              await event.edit("**Error:** `unblock` @ceowhitehatcracks `and retry!`")
     elif sysarg == "--h":
       async with borg.conversation(bot) as conv:
           try:
@@ -53,7 +53,7 @@ async def _(event):
               await borg.send_file(event.chat_id, audio, caption="**Dr.Bot Is Here To Help**\n`Check out` [Sensible Userbot Support](t.me/sensible_userbot)")
               await event.delete()
           except YouBlockedUserError:
-              await event.edit("**Error:** `unblock` @Mariodevs `and retry!`")
+              await event.edit("**Error:** `unblock` @ceowhitehatcracks `and retry!`")
     elif sysarg == "npic":
       async with borg.conversation(bot) as conv:
           try:
@@ -75,7 +75,7 @@ async def _(event):
               await borg.send_file(event.chat_id, audio, caption="**CREDITS : @CEOWHITEHATCRACKS**\n`Check out` [Sensible Userbot Support](t.me/sensible_userbot)")
               await event.delete()
           except YouBlockedUserError:
-              await event.edit("**Error:** `unblock` @Mariodevs `and retry!`")
+              await event.edit("**Error:** `unblock` @ceowhitehatcracks `and retry!`")
     elif sysarg == "ib":
       async with borg.conversation(bot) as conv:
           try:

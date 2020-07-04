@@ -1,5 +1,5 @@
 '''
-© StarkGang
+© Sensible Userbot
 added speciality for sudos if u kang give me credits
 '''
 from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute

@@ -1,5 +1,5 @@
-# © By StarkGang™ And IndianBot™
-# For F.r.i.d.a.y And Indianbot ™
+# © By Sensible Userbot™ And Sensible Userbot™
+# For F.r.i.d.a.y And Sensible Userbot ™
 """ Userbot module which contains everything related to \
     downloading/uploading from/to the server. """
 
@@ -116,7 +116,7 @@ async def download(target_file):
             estimated_total_time = downloader.get_eta(human=True)
             try:
                 current_message = f"{status}..\
-                \nFOR : F.R.I.D.A.Y™ AND INDIANBOT™\
+                \nFOR : F.R.I.D.A.Y™ AND Sensible Userbot™\
                 \nURL: {url}\
                 \nFile Name: {file_name}\
                 \n{progress_str}\

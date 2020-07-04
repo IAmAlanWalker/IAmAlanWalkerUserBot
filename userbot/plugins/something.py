@@ -1,4 +1,4 @@
-''' Whatever Plugin by Noobs of Telegram i.e. @pureindialover '''
+''' Whatever Plugin by Noobs of Telegram i.e. @CeoWhiteHatCracks '''
 
 from telethon import events
 import asyncio

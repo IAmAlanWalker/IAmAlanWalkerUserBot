@@ -1,4 +1,4 @@
-"""Enable Seen Counter in any message, Fix by @pureindialover
+"""Enable Seen Counter in any message, Fix by @CeoWhiteHatCracks
 to know how many users have seen your message
 Syntax: .fwd as reply to any message"""
 from telethon import events
