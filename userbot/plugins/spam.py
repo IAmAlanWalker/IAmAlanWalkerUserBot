@@ -80,15 +80,3 @@ async def spammer(e):
             LOGGER_GROUP, "#DelaySPAM\n"
             "DelaySpam was executed successfully")
             
-@register(outgoing=True, pattern=".stopspam (.*)")
-async def spammer(e):
-    messege = .restart
-    await e.delete()
-    for i in range(1, counter):
-        await e.respond(spam_message)
-        await sleep(spamDelay)
-    if LOGGER:
-        await e.client.send_message(
-            LOGGER_GROUP, "#DelaySPAM\n"
-            "stop spamm sucessfull")
-    
