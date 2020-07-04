@@ -11,6 +11,7 @@ import asyncio
 import random
 import re
 import time
+from userbot import ALIVE_NAME
 
 from collections import deque
 
@@ -424,13 +425,13 @@ RAPE_STRINGS = [
 ] 
 ABUSE_STRINGS = [
 	   "`Chutiya he rah jaye ga`",
-	   "`Ja be Gaandu`",
-	   "`Muh Me Lega Bhosdike ?`",
-	   "`Kro Gandu giri kam nhi toh Gand Maar lenge tumhari hum😂`",
-       "`Suno Lodu Jyda muh na chalo be muh me lawda pel Diyaa jayega`",
-       "`Sharam aagyi toh aakhe juka lijia land me dam nhi hai apke toh Shilajit kha lijia`",
-       "`Kahe Rahiman Kaviraaj C**t Ki Mahima Aisi,L**d Murjha Jaaye Par Ch**t Waisi Ki Waisi`",
-       "`Chudakkad Raand Ki Ch**T Mein Pele L*Nd Kabeer, Par Aisa Bhi Kya Choda Ki Ban Gaye Fakeer`",
+	   "`Kya Phooka Tha Kal?`",
+	   "`Abe Bhang mar ke aya hei kya ?`",
+	   "`Tum Ek baat Batao Roj RandiPa Karte Ho Uska Koi Fayeda hei?`",
+       "`Jaa Jake Bartan Manj Bakchodi mat kar`",
+       "`Lund Choos Le {DEFAULTUSER} Ka Bhosdk `",
+       "`Phir A Gya Tu Bhosdk Chut Si Sakal Ka`",
+       "`Randi Kahike Lund Pasad Hei to Choss Le {DEFAULTUSER} Ka",
 ]
 GEY_STRINGS = [
      "`you gey bsdk`",
