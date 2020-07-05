@@ -1,4 +1,4 @@
-"""@telegraph Utilities
+"""@telegraph Plugin For Lazy People
 Available Commands:
 .telegraph media as reply to a media
 .telegraph text as reply to a large text"""
@@ -14,17 +14,17 @@ r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
 
 
-@borg.on(admin_cmd("telegraph (media text) ?(.*)"))
+@borg.on(admin_cmd("telegraph (media|text) ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
-    if Config.PRIVATE_GROUP_BOT_API_ID is None:
-        await event.edit("Please set the required environment variable `PRIVATE_GROUP_BOT_API_ID` for this plugin to work")
+    if Config.PLUGIN_CHANNEL is None:
+        await event.edit("Please set the required environment variable `PLUGIN_CHANNEL` for this plugin to work")
         return
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     await borg.send_message(
-        Config.PRIVATE_GROUP_BOT_API_ID,
+        Config.PLUGIN_CHANNEL,
         "Created New Telegraph account {} for the current session. \n**Do not give this url to anyone, even if they say they are from Telegram!**".format(auth_url)
     )
     optional_title = event.pattern_match.group(2)
