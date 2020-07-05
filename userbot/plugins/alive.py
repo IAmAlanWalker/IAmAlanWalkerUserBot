@@ -9,6 +9,7 @@ from userbot.utils import admin_cmd
 
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
+ALIVE_IMG = "https://telegra.ph/file/6225d447ed8ba1d23079f.jpg"
 ALIVE_caption = "`Sensible Userbot IS:` **ONLINE**\n\n"
 ALIVE_caption += "**SYSTEM STATUS**\n\n"
 ALIVE_caption += "`TELETHON VERSION:` **6.0.9**\n`Python:` **3.7.4**\n\n"
@@ -26,4 +27,4 @@ ALIVE_caption += "[Deploy SensibleUserbot](GitHub.com/spandey112/SensibleUserbot
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     await alive.delete() 
-    await borg.send_file(alive.chat_id,caption=ALIVE_caption)
+     await borg.send_file(alive.chat_id, ALIVE_IMG,caption=ALIVE_caption)
