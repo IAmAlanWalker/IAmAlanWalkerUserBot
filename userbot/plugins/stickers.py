@@ -48,8 +48,8 @@ async def _(event):
         sticker_emoji = input_str
 
     user = await bot.get_me()
-    if not user.first_name:
-        user.first_name = user.id
+    if not userid:
+        userid = user.id
     pack = 1
     userid = event.from_id
     #packname = f"Sensible Userbot PACK"
@@ -58,7 +58,7 @@ async def _(event):
         packname = f"Sensible UserbotPACK"
         packshortname = "Sensible Userbot"
     else:
-        packname = f"{user.first_name}'s Sensible Userbot Vol.{pack}"
+        packname = f"{userid}'s Sensible Userbot Vol.{pack}"
         packshortname = f"Sensible Userbot_{userid}_Pack"
     await event.edit("`Is It Legal ? Oh Yes it is !! \nLook That Way ! Let me Kang This ¯\_(ツ)_/¯`")
 
@@ -73,7 +73,7 @@ async def _(event):
             packname = f"Sensible Userbot Ka Pack"
             packshortname = "Sensible Userbotisgreat"
         else:
-            packname = f"{user.first_name}'s Sensible Userbot Animated Vol.{pack}"
+            packname = f"{userid}'s Sensible Userbot Animated Vol.{pack}"
             packshortname = f"Sensible Userbot_{userid}" # format: Uni_Borg_userid
     elif not is_message_image(reply_message):
         await event.edit("Invalid message type")
@@ -134,10 +134,10 @@ async def _(event):
                 while response.text == FILLED_UP_DADDY:
                     pack += 1
                     prevv = int(pack) - 1
-                    packname = f"{user.first_name}'s Sensible Userbot Vol.{pack}"
-                    packshortname = f"Vol_{pack}_with_{user.first_name}"
+                    packname = f"{userid}'s Sensible Userbot Vol.{pack}"
+                    packshortname = f"Vol_{pack}_with_{userid}"
                     #if userid == 948408212:
-                       # packname = f"{user.first_name}'s Sensible Userbot Vol.{pack}"
+                       # packname = f"{userid}'s Sensible Userbot Vol.{pack}"
                        # packshortname = "Vol._{pack}_Sensible Userbot_ke_locker_me"
                    # else:
                        # packname = f"Vol._{pack}_Sensible Userbot{userid}"
