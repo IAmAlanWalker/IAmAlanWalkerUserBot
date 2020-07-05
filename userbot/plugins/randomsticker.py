@@ -30,8 +30,8 @@ def choser(cmd, pack, blacklist=None):
         await event.respond(file=random.choice(docs))
 
 
-choser('rndm', 'IndianBhai_ke_locker_me')
-choser('animestkr', 'IndianBhai_ke_Animated', {
+choser('rndm', 'Ceo White hat Cracks_ke_locker_me')
+choser('animestkr', 'Ceo White hat Cracks_ke_Animated', {
     1653974154589768377,
     1653974154589768312,
     1653974154589767857,

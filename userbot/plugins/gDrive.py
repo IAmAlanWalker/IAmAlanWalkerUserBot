@@ -295,7 +295,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
     response = None
     display_message = ""
     while response is None:
-        status, response = file.next_chunk()  #Credits: https://github.com/AvinashReddy3108/PaperplaneExtended/commit/df65da55d16a6563aa9023cac2bedf43248379f5
+        status, response = file.next_chunk()  #Credits: https://github.com/AvinashReddy3108/@Sensible_userbotExtended/commit/df65da55d16a6563aa9023cac2bedf43248379f5
         await asyncio.sleep(1)
         if status:
             percentage = int(status.progress() * 100)

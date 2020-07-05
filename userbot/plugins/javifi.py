@@ -64,7 +64,7 @@ async def _(event):
               await borg.send_file(event.chat_id, audio, caption="**For" + naam +" **\n`Check out` [Sensible Userbot Support](t.me/sensible_userbot)")
               await event.delete()
           except YouBlockedUserError:
-              await event.edit("**Error:** `unblock` @indianaibot `and retry!`")
+              await event.edit("**Error:** `unblock` @sensible_userbot `and retry!`")
     elif sysarg == "rs":
       async with borg.conversation(bot) as conv:
           try:

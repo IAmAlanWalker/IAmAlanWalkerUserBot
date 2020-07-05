@@ -21,7 +21,7 @@ ALIVE_caption += f"**My Boss** : {DEFAULTUSER} \n\n"
 ALIVE_caption += "**Heroku Database** : `AWS - Working Properly`\n\n"
 ALIVE_caption += "**Bot Made By @ceowhitehatcracks \n\n"
 ALIVE_caption += "Copyright By [CEOWHITEHATCRACKS](GitHub.com/spandey112)\n\n"
-ALIVE_caption += "[Deploy SensibleUserbot](GitHub.com/spandey112/sensibleuserbot)"
+ALIVE_caption += "[Deploy SensibleUserbot](GitHub.com/spandey112/SensibleUserbot)"
 #@command(outgoing=True, pattern="^.alive$")
 @borg.on(admin_cmd(pattern=r"alive"))
 async def amireallyalive(alive):

@@ -167,7 +167,7 @@ async def _(event):
                     event.chat_id,
                     downloaded_file_name,
                     thumb=thumb,
-                    caption="reuploaded by [Sensible Userbot](https://www.github.com/indianbhaiya/Sensible Userbot",
+                    caption="reuploaded by [Sensible Userbot](https://www.github.com/Ceo White hat Cracksya/Sensible Userbot",
                     force_document=False,
                     allow_cache=False,
                     reply_to=event.message.id,

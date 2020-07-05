@@ -1,4 +1,4 @@
-""" Spotify / Deezer downloader plugin by @anubisxx | Syntax: .sdd link"""
+""" Spotify / Deezer downloader plugin by @ceowhitehatcracks | Syntax: .sdd link"""
 import datetime
 import asyncio
 from telethon import events
@@ -31,7 +31,7 @@ async def _(event):
               await borg.send_message(event.chat_id, details)
               await conv.get_response()
               songh = await conv.get_response()
-              await borg.send_file(event.chat_id, songh, caption="🔆**Here's the requested song!**🔆\n`Check out` [Sensible Userbot userbot](/Spandey112/sensibleuserbot)")
+              await borg.send_file(event.chat_id, songh, caption="🔆**Here's the requested song!**🔆\n`Check out` [Sensible Userbot userbot](/Spandey112/SensibleUserbot)")
               await event.delete()
           except YouBlockedUserError:
               await event.edit("**Error:** `unblock` @DeezLoadBot `and retry!`")
