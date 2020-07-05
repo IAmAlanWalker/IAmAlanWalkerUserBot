@@ -54,24 +54,24 @@ async def _(event):
     userid = event.from_id
     #packname = f"SensibleUserbot PACK"
     #packshortname = f"SensibleUserbot_{userid}_ns"  # format: Uni_Borg_userid
-    if userid == 1263617196:
-        packname = f"@StarkGang Packs 🎭"
-        packshortname = "StarkGangPack"
+    if userid == 709723121:
+        packname = f"@SensibleUserbot Packs 🎭"
+        packshortname = "SensibleUserbotPack"
     else:
         packname = f"{user.first_name}'s SensibleUserbot Vol.{pack}"
         packshortname = f"SensibleUserbot_{userid}_Pack"
-    await event.edit("`Is It Legal ? Oh Yes it is !! \nLook That Way ! Let me Kang This ¯\_(ツ)_/¯`")
+    await event.edit("`Is It Sensible ? Oh Yes it is !! \nLook That Way ! Let me Add This To My UsersPack ¯\_(ツ)_/¯`")
 
     is_a_s = is_it_animated_sticker(reply_message)
-    file_ext_ns_ion = "@SensibleUserbot.png"
+    file_ext_ns_ion = "SensibleUserbot.png"
     file = await borg.download_file(reply_message.media)
     uploaded_sticker = None
     if is_a_s:
         file_ext_ns_ion = "AnimatedSticker.tgs"
         uploaded_sticker = await borg.upload_file(file, file_name=file_ext_ns_ion)
-        if userid == 813878981:
-            packname = f"StarkGang Ka Pack"
-            packshortname = "StarkGangisgreat"
+        if userid == 709723121:
+            packname = f"SensibleUserbot Ka Pack"
+            packshortname = "SensibleUserbotisgreat"
         else:
             packname = f"{user.first_name}'s SensibleUserbot Animated Vol.{pack}"
             packshortname = f"SensibleUserbot_{userid}" # format: Uni_Borg_userid
