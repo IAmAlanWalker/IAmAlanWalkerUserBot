@@ -29,7 +29,7 @@ I THANK Mr White Who Made video For Depying WATCH VIDEO ON HOW TO DEPLOY
 [![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/spandey112/SensibleUserbot/)
 
 Take Sting session from Replit
-[![Run on Repl.it](https://repl.it/badge/github/spandey112/SensibleUserbot)](https://sensibleuserbotstringsession.spandey112.repl.run/)
+[![Run on Repl.it](https://repl.it/badge/github/spandey112/SensibleUserbot)](https://stringsession.sensibleuserbot.repl.run/)
 -------------------------------------------------
 
 🔺 How to Deploy your UserBot to Heroku 🔺
