@@ -25,7 +25,7 @@ else:
     if Var.TG_BOT_USER_NAME_BF_HER is not None:
         print("Initiating Inline Bot")
         # ForTheGreatrerGood of beautification
-        bot.tgbot = TelegramClient(
+        bot.tgbot = TelegramClient
             "TG_BOT_TOKEN",
             api_id=Var.APP_ID,
             api_hash=Var.API_HASH
@@ -49,7 +49,7 @@ for name in files:
 
 import userbot._core
 
-print("Yay your userbot is officially working. You should owe @Ceowhitehatcracks For This Cool Bot")
+print("Yay your userbot is officially working. You should owe @CeoWhitehatCracks && @SPlDER_XD For This Cool Bot")
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()
