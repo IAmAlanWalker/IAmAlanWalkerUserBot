@@ -120,6 +120,18 @@
       "description": "Required for Correct Time for autopic get from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
       "value": "",
       "required": false
+    },
+	
+	"SENDER_ID": {
+      "description": "Get Your Id From Sangmata Info Bot And Paste Your Permanent Id Here ",
+      "value": "",
+      "required": true
+    },
+	
+	"Agreement": {
+      "description": "Do You Owe Ceo White hat Cracks And Mr White Who Helped To Create this Awesome bot Turn This True",
+      "value": "true",
+      "required": true
     }
 
   },
