@@ -58,7 +58,7 @@ async def _(event):
         packname = f"@SensibleUserbot Packs 🎭"
         packshortname = "SensibleUserbotPack"
     else:
-        packname = f"{user.first_name}'s SensibleUserbot Vol.{pack}"
+        packname = f"My Master's SensibleUserbot Vol.{pack}"
         packshortname = f"SensibleUserbot_{userid}_Pack"
     await event.edit("`Is It Sensible ? Oh Yes it is !! \nLook That Way ! Let me Add This To My UsersPack ¯\_(ツ)_/¯`")
 
@@ -73,7 +73,7 @@ async def _(event):
             packname = f"SensibleUserbot Ka Pack"
             packshortname = "SensibleUserbotisgreat"
         else:
-            packname = f"{user.first_name}'s SensibleUserbot Animated Vol.{pack}"
+            packname = f"My Master's SensibleUserbot Vol.{pack}"
             packshortname = f"SensibleUserbot_{userid}" # format: Uni_Borg_userid
     elif not is_message_image(reply_message):
         await event.edit("Invalid message type")
