@@ -10,7 +10,7 @@ from userbot.utils import admin_cmd
 
 FONT_FILE_TO_USE = "Fonts/digital.ttf"
 
-@command(pattern="^.timepic", outgoing=True)
+@command(pattern="^.seconddp", outgoing=True)
 #@borg.on(admin_cmd(pattern=r"timepic"))
 async def timepic(event):
     downloaded_file_name = "userbot/original_pic.png"
