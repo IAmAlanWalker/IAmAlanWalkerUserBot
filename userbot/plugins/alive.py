@@ -26,5 +26,5 @@ ALIVE_caption += "[Deploy SensibleUserbot](GitHub.com/spandey112/SensibleUserbot
 @borg.on(admin_cmd(pattern=r"alive"))
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
-    await alive.delete() 
-     await borg.send_file(alive.chat_id, ALIVE_IMG,caption=ALIVE_caption)
+    await alive.delete()
+    await borg.send_file(alive.chat_id, ALIVE_IMG,caption=ALIVE_caption)
