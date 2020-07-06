@@ -10,9 +10,9 @@ from userbot.utils import admin_cmd
 
 FONT_FILE_TO_USE = "Fonts/digital.ttf"
 
-@command(pattern="^.autopic", outgoing=True)
-#@borg.on(admin_cmd(pattern=r"autopic"))
-async def autopic(event):
+@command(pattern="^.timepic", outgoing=True)
+#@borg.on(admin_cmd(pattern=r"timepic"))
+async def timepic(event):
     downloaded_file_name = "userbot/original_pic.png"
     downloader = SmartDL(Var.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=False)
     downloader.start(blocking=False)
@@ -24,7 +24,7 @@ async def autopic(event):
         shutil.copy(downloaded_file_name, photo)
         im = Image.open(photo)
         file_test = im.rotate(counter, expand=False).save(photo, "PNG")
-        current_time = datetime.now().strftime("%H:%M")
+        current_time = datetime.now().strftime("%H:%M:%s")
         img = Image.open(photo)
         drawn_text = ImageDraw.Draw(img)
         fnt = ImageFont.truetype(FONT_FILE_TO_USE, 50)
@@ -37,6 +37,6 @@ async def autopic(event):
             ))
             os.remove(photo)
             counter -= 30
-            await asyncio.sleep(60)
+            await asyncio.sleep(10)
         except:
             return
