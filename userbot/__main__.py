@@ -50,7 +50,7 @@ for name in files:
 
 import userbot._core
 
-print("Yay your userbot is officially working. You should owe @CeoWhitehatCracks && @SPlDER_XD For This Cool Bot")
+print("Yay your userbot is officially working. You should Do .alive To Chk That Bot Is Working Or Not If Any Eroor Contact @CeoWhitehatCracks && Join @Sensible_userbotFor This Cool Bot")
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()

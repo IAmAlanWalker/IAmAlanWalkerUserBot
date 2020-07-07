@@ -118,7 +118,7 @@ async def _(event):
                 requires_file_name,
                 supports_streaming=False,
                 caption="Userbot: Powered by @CeoWhiteHatCracks",
-                # Courtesy: @A_Dark_Princ3
+                # Courtesy: @CeoWhiteHatCracks
             )
             await event.delete()
             await borg.send_message(event.chat_id, "`☠️☠️23 Points to Griffindor!🔥🔥`")
