@@ -12,6 +12,7 @@ FONT_FILE_TO_USE = "Fonts/digital.ttf"
 
 @command(pattern="^.dptimeset ?(.*)", outgoing=True)
 #@borg.on(admin_cmd(pattern=r"dptimeset"))
+time = event.pattern_match.group*():
 async def dptimeset(event):
     downloaded_file_name = "userbot/original_pic.png"
     downloader = SmartDL(Var.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=False)
@@ -20,7 +21,7 @@ async def dptimeset(event):
     while not downloader.isFinished():
         place_holder = None
     counter = -30
-	time = event.pattern_match.group
+	time = event.pattern_match.group*():
     while True:
         shutil.copy(downloaded_file_name, photo)
         im = Image.open(photo)
