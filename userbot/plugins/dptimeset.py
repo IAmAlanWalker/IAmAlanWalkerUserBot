@@ -20,7 +20,7 @@ async def dptimeset(event):
     while not downloader.isFinished():
         place_holder = None
     counter = -30
-	reason = event.pattern_match.group()
+	reason = event.pattern_match.group
     while True:
         shutil.copy(downloaded_file_name, photo)
         im = Image.open(photo)
