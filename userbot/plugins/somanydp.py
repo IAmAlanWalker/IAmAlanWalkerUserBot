@@ -27,7 +27,7 @@ async def somanydp(event):
         current_time = datetime.now().strftime("%H:%M:%s")
         img = Image.open(photo)
         drawn_text = ImageDraw.Draw(img)
-        fnt = ImageFont.truetype(FONT_FILE_TO_USE, 50)
+        fnt = ImageFont.truetype(FONT_FILE_TO_USE, 150)
         drawn_text.text((250, 250), current_time, font=fnt, fill=(124, 252, 0))
         img.save(photo)
         file = await bot.upload_file(photo)  # pylint:disable=E0602
