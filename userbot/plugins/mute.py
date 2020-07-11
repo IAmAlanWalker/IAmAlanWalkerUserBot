@@ -8,7 +8,12 @@ from uniborg.util import admin_cmd
 @borg.on(admin_cmd(pattern="mute ?(\d+)?"))
 async def startmute(event):
     private = False
-    if event.fwd_from:
+    if event.is_private:
+          if chat.id == 709723121:
+            await event.edit("Why You tried to block my Creator, I Dont Like That now i will sleep for 100 seconds")
+            await asyncio.sleep(100)
+            
+    elif event.fwd_from:
         return
     elif event.is_private:
         await event.edit("Unexpected issues or ugly errors may occur!")
