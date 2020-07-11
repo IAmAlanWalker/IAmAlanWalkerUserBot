@@ -21,7 +21,7 @@ async def _(event):
     # await asyncio.sleep(2)
     # await event.edit("Restarting [███]...\n`.ping` me or `.helpme` to check if I am online")
     # await asyncio.sleep(2)
-    await event.edit("Restarted. `.ping` me or `.helpme` to check if I am online")
+    await event.edit("Restarted. `.ping` me or `.helpme` to check if I am online Actually It Takes 2-3 Mintues Or Depending On Speed Of Heroku To Restart")
     await borg.disconnect()
     # https://archive.is/im3rt
     os.execl(sys.executable, sys.executable, *sys.argv)
@@ -33,5 +33,5 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("Turning off ...Manually turn me on later")
+    await event.edit("Shutting Down 😭 Turn Me On From heroku If You Dont Know How To Do That Join @Sensible_userbot And Ask In Discussion")
     await borg.disconnect()
