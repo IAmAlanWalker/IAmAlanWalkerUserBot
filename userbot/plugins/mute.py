@@ -1,92 +1,96 @@
-'''Thakn You @CeoWhiteHatCracks
+'''
+© Sensible Userbot
+added speciality for sudos if u kang give me credits
 '''
 from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute
 import asyncio
-from uniborg.util import admin_cmd
-
+from userbot.utils import admin_cmd
+from telethon import events
 #@command(outgoing=True, pattern=r"^.mute ?(\d+)?")
-@borg.on(admin_cmd(pattern="mute ?(\d+)?"))
+@borg.on(admin_cmd(pattern=r"mute ?(\d+)?"))
 async def startmute(event):
     private = False
-    if event.is_private:
-          if chat.id == 709723121:
-            await event.edit("Why You tried to block my Creator, I Dont Like That now i will sleep for 100 seconds")
-            await asyncio.sleep(100)
-            
-    elif event.fwd_from:
+    if event.fwd_from:
+        return
+    reply = await event.get_reply_message()
+    user_id = reply.from_id
+    if user_id == (await borg.get_me()).id:	
+        await event.edit(r"Btw Boss!!Why would I mute You. You are my Boss!!")	
+        return	
+    if user_id in Config.SUDO_USERS:	
+        await event.edit(	
+            "**He has more power than me.**\nPerhaps I can't mute him.\n\n"	
+            "**Why??:** `He is a sudo user`.")	
+        return
+    if user_id in Config.WHITELIST_USERS:	
+        await event.edit(	
+            "**He has more Power Of Thor And Hulk.**\nPerhaps I can't mute him.\n\n"	
+            "**WHY??** He is a Whitelist user.")	
+        return
+    if user_id in Config.SUPPORT_USERS:	
+        await event.edit(	
+            "**He has Friend as Thanos!!.**\nPerhaps I can't mute him.\n\n"	
+            "**why??:** He is SUPPORT user.")	
+        return
+    if user_id in Config.DEVLOPERS:	
+        await event.edit(	
+            "**He my Creator.**\nPerhaps I can't mute him.\n\n"	
+            "**Why??** He is my Creator.")	
         return
     elif event.is_private:
-        await event.edit("Unexpected issues or ugly errors may occur!")
+        await event.edit("Putting Duct Tape on that person's mouth!Now Just Shut Up!!")
         await asyncio.sleep(3)
         private = True
-    if any([x in event.raw_text for x in ("/mute", "!mute", "amute", "bmute", "cmute", "dmute", "emute", "fmute", "gmute", "hmute", "imute", "jmute", "kmute", "lmute", "mmute", "nmute", "omute", "pmute", "qmute", "rmute", "smute", "tmute", "umute", "vmute", "wmute", "xmute", "ymute", "zmute" )]):
-        await asyncio.sleep(0.5)
+    reply = await event.get_reply_message()
+    if event.pattern_match.group(1) is not None:
+        userid = event.pattern_match.group(1)
+    elif reply is not None:
+        userid = reply.sender_id
+    elif private is True:
+        userid = event.chat_id
     else:
-        reply = await event.get_reply_message()
-        if event.pattern_match.group(1) is not None:
-            userid = event.pattern_match.group(1)
-        elif reply is not None:
-            userid = reply.sender_id
-        elif private is True:
-            userid = event.chat_id
-        else:
-            return await event.edit("Please reply to a user or add their userid into the command to mute them.")
-        chat_id = event.chat_id
-        chat = await event.get_chat()
-        if "admin_rights" in vars(chat) and vars(chat)["admin_rights"] is not None: 
-            if chat.admin_rights.delete_messages is True:
-                pass
-            else:
-                return await event.edit("`You can't mute a person if you dont have delete messages permission. ಥ﹏ಥ`")
-        elif "creator" in vars(chat):
-            pass
-        elif private == True:
-            pass
-        else:
-            return await event.edit("`You can't mute a person without admin rights niqq.` ಥ﹏ಥ  ")
-        if is_muted(userid, chat_id):
-            return await event.edit("This user is already muted in this chat ~~lmfao sed rip~~")
-        try:
-            mute(userid, chat_id)
-        except Exception as e:
-            await event.edit("Error occured!\nError is " + str(e))
-        else:
-            await event.edit("Successfully muted that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **")
+        return await event.edit("Please reply to a user or add their into the command to mute them.")
+    chat_id = event.chat_id
+    chat = await event.get_chat()
+    if is_muted(userid, "mute"):
+        return await event.edit("Duct Tape is already in this user's mouth😷")
+    try:
+        mute(userid, "mute")
+    except Exception as e:
+        await event.edit("Error occured!\nError is " + str(e))
+    else:
+        await event.edit("Successfully putted Duct Tape on that person's mouth😷")
 
 #@command(outgoing=True, pattern=r"^.unmute ?(\d+)?")
-@borg.on(admin_cmd(pattern="unmute ?(\d+)?"))
+@borg.on(admin_cmd(pattern=r"unmute ?(\d+)?"))
 async def endmute(event):
     private = False
     if event.fwd_from:
         return
     elif event.is_private:
-        await event.edit("Unexpected issues or ugly errors may occur!")
+        await event.edit("Removed Duct Tape from that person's mouth!😐")
         await asyncio.sleep(3)
         private = True
-    if any([x in event.raw_text for x in ("/unmute", "!unmute", "aunmute", "bunmute", "cunmute", "dunmute", "eunmute", "funmute", "gunmute", "hunmute", "iunmute", "junmute", "kunmute", "lunmute", "munmute", "nunmute", "ounmute", "punmute", "qunmute", "runmute", "sunmute", "tunmute", "uunmute", "vunmute", "wunmute", "xunmute", "yunmute", "zunmute" )]):
-        await asyncio.sleep(0.5)
+    reply = await event.get_reply_message()
+    if event.pattern_match.group(1) is not None:
+        userid = event.pattern_match.group(1)
+    elif reply is not None:
+        userid = reply.sender_id
+    elif private is True:
+        userid = event.chat_id
     else:
-        reply = await event.get_reply_message()
-        if event.pattern_match.group(1) is not None:
-            userid = event.pattern_match.group(1)
-        elif reply is not None:
-            userid = reply.sender_id
-        elif private is True:
-            userid = event.chat_id
-        else:
-            return await event.edit("Please reply to a user or add their userid into the command to unmute them.")
-        chat_id = event.chat_id
-        if not is_muted(userid, chat_id):
-            return await event.edit("__This user is not muted in this chat__\n（ ^_^）o自自o（^_^ ）")
-        try:
-            unmute(userid, chat_id)
-        except Exception as e:
-            await event.edit("Error occured!\nError is " + str(e))
-        else:
-            await event.edit("Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍")
-            
-
+        return await event.edit("Please reply to a user or add their into the command to unmute them.")
+    chat_id = event.chat_id
+    if not is_muted(userid, "mute"):
+        return await event.edit("Duct Tape is not on this user's mouth")
+    try:
+        unmute(userid, "mute")
+    except Exception as e:
+        await event.edit("Error occured!\nError is " + str(e))
+    else:
+        await event.edit("Successfully Removed Duct Tape from that person's mouth")
+        
 @command(incoming=True)
 async def watcher(event):
-    if is_muted(event.sender_id, event.chat_id):
+    if is_muted(event.sender_id, "mute"):
         await event.delete()
