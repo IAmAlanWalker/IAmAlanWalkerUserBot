@@ -49,6 +49,20 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await event.edit("Approved to pm [{}](tg://user?id={})".format(firstname, chat.id))
                 await asyncio.sleep(3)
                 await event.delete()
+                
+   @bot.on(events.NewMessage(outgoing=True))
+    async def you_dm_niqq(event):
+        if event.fwd_from:
+            return
+        chat = await event.get_chat()
+        if event.is_private:
+            if not pmpermit_sql.is_approved(chat.id):
+                if not chat.id in PM_WARNS:
+                    pmpermit_sql.approve(chat.id, "outgoing")
+                    bruh = "**Sensible Userbot AI Added This User added to approved list as out-going message**"
+                    rko = await borg.send_message(event.chat_id, bruh)
+                    await asyncio.sleep(3)
+                    await rko.delete()
 
 
     @command(pattern="^.block ?(.*)")
@@ -213,18 +227,6 @@ async def hehehe(event):
             await borg.send_message(chat, "**Boss Meet My Creator He IS My GodFather So He Will Automaticly Be Approved**")
             
             
-             @bot.on(events.NewMessage(outgoing=True))
-    async def you_dm_niqq(event):
-        if event.fwd_from:
-            return
-        chat = await event.get_chat()
-        if event.is_private:
-            if not pmpermit_sql.is_approved(chat.id):
-                if not chat.id in PM_WARNS:
-                    pmpermit_sql.approve(chat.id, "outgoing")
-                    bruh = "**Sensible Userbot AI Added This User added to approved list as out-going message**"
-                    rko = await borg.send_message(event.chat_id, bruh)
-                    await asyncio.sleep(3)
-                    await rko.delete()
+             
 
            
