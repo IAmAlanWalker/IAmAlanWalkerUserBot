@@ -122,8 +122,8 @@ async def on_night(event):
             else:
                 night_since = f"`{int(seconds)}s` **ago**"
         msg = None
-        message_to_reply = f"My Master Has Been Gone For {night_since}\nWhere He Is: **On Bed Sleeping** " + \
-            f"\n\n__ I'll back in a few Light years__\n**" \
+        message_to_reply = f"Important Notice**\n\n[{DEFAULTUSER} Is Sleeping DND And Also Good night To You...]" + \
+            f"https://telegra.ph/file/3e6d2fb965f293e3680ff.jpg) **" \
             if reason \
             else f"**Important Notice**\n\n[{DEFAULTUSER} Is Sleeping DND And Also Good night To You...](https://telegra.ph/file/3e6d2fb965f293e3680ff.jpg) "
         msg = await event.reply(message_to_reply)
