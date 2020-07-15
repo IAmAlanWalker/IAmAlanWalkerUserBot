@@ -52,7 +52,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await event.delete()
                 
                 
-              @bot.on(events.NewMessage(outgoing=True))
+              @command(events.NewMessage(outgoing=True))
     async def on_outgoing_msg(event):
         if event.fwd_from:
             return
