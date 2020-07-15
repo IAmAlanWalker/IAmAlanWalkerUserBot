@@ -61,10 +61,10 @@ if Var.PRIVATE_GROUP_ID is not None:
             if not pmpermit_sql.is_approved(chat.id):
                 if not chat.id in PM_WARNS:
                     pmpermit_sql.approve(chat.id, "outgoing")
-                    bruh = "Sensible Userbot AI Permitted This User To Ib Because Outgoing Messege"
-                    rko = await borg.send_message(event.chat_id, bruh)
+                    ai = "Sensible Userbot AI Permitted This User To Ib Because Outgoing Messege"
+                    event = await borg.send_message(event.chat_id, ai)
                     await asyncio.sleep(3)
-                    await rko.delete()
+                    await event.delete()
 
 
 
