@@ -8,18 +8,19 @@ from telethon import events, errors, functions, types
 from userbot import ALIVE_NAME, CUSTOM_PMPERMIT,  LESS_SPAMMY
 from userbot.utils import admin_cmd
 
+PM_WARNS = {}
+PREV_REPLY_MESSAGE = {}
+CACHE = {}
+
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
   WARN_PIC = "https://telegra.ph/file/40ea2411f2c8c8ef86d7c.jpg"
 else:
   WARN_PIC = PMPERMIT_PIC
 
-PM_WARNS = {}
-PREV_REPLY_MESSAGE = {}
-
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
-CUSTOM_MIDDLE_PMP = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "**YOU HAVE TRESPASSED TO MY MASTERS INBOX** \n`THIS IS ILLEGAL AND REGARDED AS A CRIME`"
+CUSTOM_MIDDLE_PMP = "**IDK WHAT HAS MY MASTER SET But ** \n`THIS IS ILLEGAL AND REGARDED AS A CRIME`"
 USER_BOT_WARN_ZERO = "`Unfortunataly You Have Been Banned Because You Were Spamming My Masters Inbox.` "
 USER_BOT_NO_WARN = ("`Hello Ser ! This is` **Sensible Userbot**\n"
                     "`Private Messaging Security Protocol ⚠️`\n\n"
